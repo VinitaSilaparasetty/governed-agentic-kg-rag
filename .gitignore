@@ -1,0 +1,10 @@
+.venv/
+.chroma_db/
+__pycache__/
+*.py[cod]
+.env
+audit_log.jsonl
+*.egg-info/
+dist/
+build/
+.DS_Store

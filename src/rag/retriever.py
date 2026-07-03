@@ -4,7 +4,7 @@ Vector search over chunked maintenance manuals.
 from dataclasses import dataclass
 from pathlib import Path
 
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 
 from .ingest import load_vector_store, CHROMA_DIR
 

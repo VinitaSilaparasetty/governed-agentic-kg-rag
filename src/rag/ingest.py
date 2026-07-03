@@ -1,20 +1,22 @@
 """
 Chunk and embed maintenance manual text files into the vector store.
+
+Default provider: fastembed (ONNX-based, no PyTorch/CUDA required).
+Swap to OpenAI or Anthropic by setting EMBEDDING_PROVIDER in .env.
 """
 import os
 from pathlib import Path
 
 from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_chroma import Chroma
 
 
 MANUALS_DIR = Path(__file__).parents[2] / "data" / "manuals"
 CHROMA_DIR = Path(__file__).parents[2] / ".chroma_db"
 
-EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
-EMBEDDING_PROVIDER = os.getenv("EMBEDDING_PROVIDER", "huggingface")
+EMBEDDING_PROVIDER = os.getenv("EMBEDDING_PROVIDER", "fastembed")
+EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "BAAI/bge-small-en-v1.5")
 
 
 def _get_embeddings():
@@ -24,7 +26,9 @@ def _get_embeddings():
     if EMBEDDING_PROVIDER == "anthropic":
         from langchain_anthropic import AnthropicEmbeddings
         return AnthropicEmbeddings(model=os.getenv("ANTHROPIC_EMBEDDING_MODEL", "voyage-3"))
-    return HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
+    # Default: fastembed (ONNX runtime — no PyTorch, no GPU required)
+    from langchain_community.embeddings import FastEmbedEmbeddings
+    return FastEmbedEmbeddings(model_name=EMBEDDING_MODEL)
 
 
 def ingest_manuals(manuals_dir: Path = MANUALS_DIR, chroma_dir: Path = CHROMA_DIR) -> Chroma:
@@ -38,6 +42,7 @@ def ingest_manuals(manuals_dir: Path = MANUALS_DIR, chroma_dir: Path = CHROMA_DI
             chunk.metadata["source_file"] = txt_file.name
         docs.extend(chunks)
 
+    print(f"  Embedding {len(docs)} chunks with {EMBEDDING_PROVIDER}/{EMBEDDING_MODEL} ...")
     embeddings = _get_embeddings()
     store = Chroma.from_documents(docs, embeddings, persist_directory=str(chroma_dir))
     return store
