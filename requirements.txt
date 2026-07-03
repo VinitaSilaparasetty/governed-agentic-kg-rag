@@ -6,12 +6,12 @@ langchain-text-splitters>=0.2,<1
 fastembed>=0.3,<1          # ONNX-based embeddings; no PyTorch/GPU required
 langchain-chroma>=0.1,<1
 chromadb>=0.5,<1
+langchain-ollama>=0.2,<1   # Free local LLM via Ollama (mistral, llama3, etc.)
 pydantic>=2.7,<3
 python-dotenv>=1.0,<2
 
 # Optional: swap embedding provider via EMBEDDING_PROVIDER env var
 # langchain-openai>=0.1      EMBEDDING_PROVIDER=openai
-# langchain-anthropic>=0.1   EMBEDDING_PROVIDER=anthropic
 
 # Dev / test
 pytest>=8.0

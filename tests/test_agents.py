@@ -130,9 +130,20 @@ def test_rag_agent_returns_chunks(mock_log, mock_retriever_cls):
 
 # ── Synthesis Agent ─────────────────────────────────────────────────────────
 
+@patch("src.agents.synthesis_agent._get_llm")
 @patch("src.agents.synthesis_agent.log_step")
-def test_synthesis_produces_output(mock_log):
+def test_synthesis_produces_output(mock_log, mock_get_llm):
     from src.agents.schemas import KGAgentOutput, RAGAgentOutput
+
+    # Mock the Ollama LLM to avoid requiring a running Ollama server in tests
+    mock_llm = MagicMock()
+    mock_response = MagicMock()
+    mock_response.content = (
+        "DIAGNOSIS: Bearing Wear detected on Pump-14 bearing Bearing-P14-DE due to excessive vibration.\n"
+        "RECOMMENDED ACTION: Perform Bearing Replacement procedure: issue LOTO permit, extract and replace bearing, realign and test."
+    )
+    mock_llm.invoke.return_value = mock_response
+    mock_get_llm.return_value = mock_llm
 
     plan = PlannerOutput(
         original_query="Why is Pump-14 vibrating?",
@@ -164,3 +175,4 @@ def test_synthesis_produces_output(mock_log):
     assert "Bearing Wear" in result.synthesis.diagnosis
     assert 0.0 <= result.synthesis.confidence <= 1.0
     assert result.synthesis.recommended_action != ""
+    mock_llm.invoke.assert_called_once()
