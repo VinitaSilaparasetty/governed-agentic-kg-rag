@@ -1,0 +1,43 @@
+TITLE: Mechanical Seal Leakage — Diagnosis and Cartridge Seal Replacement
+SOURCE: Industrial Maintenance Manual Rev. 4.2, Section 10.4
+
+SECTION 1: MECHANICAL SEAL BASICS
+A mechanical seal prevents fluid escaping along the pump shaft. It consists of a rotating
+face (attached to shaft) and a stationary face (in housing), held in contact by a spring.
+The extremely thin film of fluid between faces provides lubrication and creates the seal.
+If the faces separate, run dry, or become contaminated, leakage occurs.
+
+SECTION 2: CAUSES OF SEAL FAILURE
+- Dry running: seal faces overheat within seconds without lubricating fluid — highest
+  single cause of premature failure. Ensure pump is primed before start.
+- Vibration: excessive vibration (>4.5 mm/s at seal housing) causes dynamic face
+  separation. Resolve vibration root cause before fitting new seal.
+- Misalignment: shaft runout >0.05 mm TIR causes cyclic face separation.
+- Contamination: abrasive particles in process fluid erode seal faces; use appropriate
+  seal material (SiC vs SiC for abrasive service; Carbon vs SiC for clean service).
+- Thermal shock: starting pump with cold seal into hot process causes face cracking.
+
+SECTION 3: DIAGNOSIS
+Seal leakage rate > 10 drops/minute indicates failure. Inspect seal gland area for:
+- Crystallised deposits (slow weep with evaporation)
+- Active drips or spray (face separation or spring failure)
+- Discolouration/burns on shaft sleeve (dry-run indicator)
+
+SECTION 4: CARTRIDGE SEAL REPLACEMENT
+1. Depressurise and drain pump casing; verify 0 bar on gauge.
+2. Issue LOTO permit.
+3. Disconnect flush and quench piping from seal gland.
+4. Remove impeller (anti-clockwise thread on most centrifugal pumps — check manual).
+5. Slide old seal cartridge off shaft; inspect shaft sleeve for scoring.
+6. Measure shaft sleeve OD — replace sleeve if OD is >0.1 mm undersize.
+7. Wipe shaft and housing bore clean; apply a film of clean process fluid or silicone
+   grease to shaft sleeve (never petroleum grease on elastomers).
+8. Slide new cartridge seal into position; remove anti-rotation pins after fitting.
+9. Reinstall impeller; set correct impeller clearance (0.3–0.5 mm for open impellers).
+10. Reconnect flush lines; open flush valve before starting pump.
+11. Perform pressure test at 1.5× operating pressure for 15 minutes; check for weeps.
+
+SECTION 5: ENHANCED MONITORING
+After seal replacement, monitor shaft vibration daily for 7 days. Leakage above 5
+drops/minute within the first 48 hours indicates installation defect — do not run to
+failure; shut down and re-inspect.

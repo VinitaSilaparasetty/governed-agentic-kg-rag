@@ -1,0 +1,36 @@
+TITLE: Centrifugal Pump Bearing Wear — Diagnosis and Replacement Procedure
+SOURCE: Industrial Maintenance Manual Rev. 4.2, Section 7.3
+
+SECTION 1: SYMPTOM IDENTIFICATION
+Bearing wear in centrifugal pumps typically manifests as broadband vibration with elevated
+amplitudes in the 1x and sub-synchronous frequency bands. Velocity readings exceeding
+6 mm/s RMS at the bearing housing are a primary indicator. Thermal imaging will show
+localised hotspots above 80°C at the bearing race location. Audible symptoms include a
+characteristic high-pitched whine progressing to a rumbling noise as wear advances.
+
+SECTION 2: ROOT CAUSE ANALYSIS
+Common root causes include: (a) lubrication starvation — inspect grease quantity and
+consistency; bearing grease should be replenished every 2000 operating hours for
+continuous-duty pumps; (b) misalignment — a misaligned shaft transmits cyclic bending
+loads onto the bearing outer race, accelerating spalling; check coupling alignment before
+replacing bearings; (c) contamination ingress — inspect bearing housing seals and
+labyrinth seals for wear; (d) overloading — verify that pump is operating within the
+preferred operating region (POR) of its performance curve, 70–120% of BEP flow.
+
+SECTION 3: REPLACEMENT PROCEDURE
+1. Issue LOTO permit. Isolate power at MCC and fit lock and tag to isolator.
+2. Allow pump to cool to ambient temperature (<40°C) before opening bearing housing.
+3. Remove coupling guard and flexible coupling element. Record coupling gap.
+4. Use a hydraulic bearing puller — never impact the inner race directly.
+5. Inspect shaft journal surface for scoring (>0.05 mm gouge depth = replace shaft).
+6. Clean housing bore and inspect for out-of-round (tolerance ±0.02 mm).
+7. Heat replacement bearing to 100°C in an induction heater; slide onto shaft with
+   drive force applied only to inner race.
+8. Pack housing with correct grease grade (e.g. NLGI 2, lithium complex).
+9. Reassemble coupling, torque fasteners to spec. Perform laser alignment.
+10. Run pump for 2 hours at reduced load; monitor vibration and temperature trends.
+
+SECTION 4: POST-MAINTENANCE CHECKS
+After bearing replacement, establish a 30-day enhanced monitoring schedule:
+vibration readings every 48 hours, temperature trending at every shift change.
+Update the CMMS work order with bearing serial number and installation date.

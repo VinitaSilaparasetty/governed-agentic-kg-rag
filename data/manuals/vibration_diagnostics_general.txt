@@ -1,0 +1,46 @@
+TITLE: General Vibration Diagnostics for Rotating Industrial Equipment
+SOURCE: Industrial Maintenance Manual Rev. 4.2, Section 6.1
+
+SECTION 1: MEASUREMENT GUIDELINES
+Vibration measurements should be taken at each bearing housing location in three axes:
+horizontal (H), vertical (V), and axial (A). Use a calibrated accelerometer with a
+frequency range suitable for the expected fault — 10 Hz to 10 kHz covers most rotating
+machinery faults. Report results in velocity (mm/s RMS) for ISO 10816-3 comparison.
+
+ISO 10816-3 severity zones for large machines (>15 kW, rigid mounting):
+  Zone A (new): 0–2.3 mm/s — acceptable
+  Zone B (long-term): 2.3–4.5 mm/s — monitor
+  Zone C (short-term only): 4.5–7.1 mm/s — investigate; plan maintenance
+  Zone D (dangerous): >7.1 mm/s — shut down immediately
+
+SECTION 2: FREQUENCY ANALYSIS
+Time-domain overall levels indicate severity; frequency spectra indicate the cause.
+Key frequency markers:
+- 1x RPM: unbalance, shaft bow, misalignment (radial + axial)
+- 2x RPM: misalignment, looseness, resonance
+- 0.43–0.48x (sub-synchronous): oil whirl, cavitation onset
+- BPFO/BPFI (bearing defect frequencies): early bearing wear
+- Broadband 1–20 kHz: cavitation, bearing surface failure, electrical discharge
+
+SECTION 3: COMMON DIAGNOSTIC PATTERNS FOR CENTRIFUGAL PUMPS
+VIBRATION + NOISE + HEAT AT BEARING → Bearing Wear (confirm with bearing defect
+frequency in spectrum)
+VIBRATION + CRACKLING NOISE + FLOW REDUCTION → Cavitation (check NPSHa, inlet conditions)
+VIBRATION + AXIAL THRUST + COUPLING HEAT → Misalignment (check laser alignment)
+VIBRATION + FLUID AROUND SHAFT → Seal Leakage (inspect mechanical seal)
+VIBRATION AT 2x + BEARING OVERLOAD → Rotor Eccentricity or Misalignment
+
+SECTION 4: DECISION TREE FOR PUMP VIBRATION
+1. Is vibration >7.1 mm/s? → Shutdown immediately; escalate to maintenance team.
+2. Is vibration 4.5–7.1 mm/s?
+   a. Check bearing temperature: >80°C → suspect Bearing Wear → Section 7.3
+   b. Check inlet for crackling noise → suspect Cavitation → Section 8.1
+   c. Check coupling temperature: >70°C → suspect Misalignment → Section 9.2
+   d. Check for fluid weep at shaft → suspect Seal Leakage → Section 10.4
+3. Is vibration 2.3–4.5 mm/s? → Increase monitoring frequency; trend data; plan inspection.
+4. Is vibration <2.3 mm/s? → Normal; continue routine monitoring schedule.
+
+SECTION 5: DOCUMENTATION REQUIREMENTS
+All vibration measurements must be recorded in the CMMS with: date/time, equipment tag,
+measurement point, transducer serial number, overall level, and peak frequency.
+Trending must be reviewed monthly by the reliability engineer.

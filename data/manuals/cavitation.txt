@@ -1,0 +1,38 @@
+TITLE: Impeller Cavitation — Detection, Root Cause, and Corrective Actions
+SOURCE: Industrial Maintenance Manual Rev. 4.2, Section 8.1
+
+SECTION 1: WHAT IS CAVITATION
+Cavitation occurs when the local static pressure in the pump inlet falls below the vapour
+pressure of the pumped liquid, causing vapour bubbles to form. These bubbles collapse
+violently as they enter the high-pressure impeller zone, releasing energy that erodes
+metal surfaces and generates broadband vibration. Left uncorrected, cavitation causes
+pitting and material loss on impeller vanes and the volute, eventually causing through-wall
+failure and unplanned downtime.
+
+SECTION 2: SYMPTOMS
+- Random high-frequency broadband vibration with a crackling or gravel-like acoustic
+  signature (recorded on accelerometer spectrum 1–20 kHz).
+- Step-change reduction in flow rate or discharge pressure without change in speed.
+- Pitting marks visible on impeller vane inlet edges during inspection.
+- Increased radial bearing load due to flow imbalance.
+
+SECTION 3: NPSH ANALYSIS
+The Net Positive Suction Head available (NPSHa) must exceed the pump's required NPSH
+(NPSHr) by at least 0.5 m margin. Calculate NPSHa as:
+  NPSHa = (Patm – Pvapour) / ρg + hz – hL
+where hz is suction static head and hL is friction losses in suction piping.
+If NPSHa < NPSHr + 0.5 m, the pump is operating in a cavitating regime.
+
+SECTION 4: CORRECTIVE ACTIONS
+A. Reduce speed (VFD setpoint) to lower NPSHr — cavitation intensity falls as the cube
+   of speed reduction.
+B. Lower suction piping friction losses: check inlet strainer for fouling (>30% blockage
+   triggers cavitation), replace with larger-bore strainer, shorten suction pipe runs.
+C. Lower fluid temperature to reduce vapour pressure (relevant for hot condensate pumps).
+D. Increase suction tank level or pump inlet elevation.
+E. If impeller shows visible pitting >2 mm depth, replace impeller. See Section 7.3 for
+   impeller removal procedure.
+
+SECTION 5: PREVENTION
+Operate within the Preferred Operating Region (70–120% BEP). Install vibration monitors
+with threshold alarms at 3 mm/s and shutdown at 9 mm/s. Inspect suction strainer monthly.

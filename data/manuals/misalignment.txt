@@ -1,0 +1,36 @@
+TITLE: Shaft Misalignment in Rotating Machinery — Detection and Laser Alignment
+SOURCE: Industrial Maintenance Manual Rev. 4.2, Section 9.2
+
+SECTION 1: TYPES OF MISALIGNMENT
+Angular misalignment: centrelines intersect at a point — produces dominant 1x and 2x
+vibration with strong axial component.
+Parallel (offset) misalignment: centrelines are parallel but offset — produces dominant
+2x vibration radially.
+Combined misalignment (most common in the field): both offsets present simultaneously.
+
+SECTION 2: VIBRATION SIGNATURE
+Misalignment produces elevated vibration at 1x and 2x running speed in both radial and
+axial directions. A useful diagnostic rule: if axial vibration exceeds 50% of radial
+vibration at 1x, misalignment should be suspected before other causes. Coupling
+temperature >70°C at operation is a secondary indicator. Phase readings across coupling
+will show approximately 180° difference for parallel misalignment.
+
+SECTION 3: LASER ALIGNMENT PROCEDURE
+Equipment: Reverse-dial or laser shaft alignment system (e.g. PRUFTECHNIK OPTALIGN).
+1. Verify machine is cooled and locked out before attaching fixtures.
+2. Mount laser and prism targets to shafts — do not attach to coupling halves.
+3. Rotate both shafts together through 180° and 270° positions; record readings.
+4. Enter shaft dimensions (bearing span, coupling distance) into the alignment tool.
+5. Correct soft-foot first: loosen all hold-down bolts, check feeler gauge for rocking
+   — any gap >0.05 mm requires a shim under that foot.
+6. Add or remove shims at motor feet (vertical correction) and shift motor laterally
+   (horizontal correction) per alignment tool's recommendation.
+7. Target tolerance: offset <0.05 mm/100 mm coupling length; angularity <0.05 mm.
+8. Tighten bolts to torque specification and re-check readings after final bolt torque
+   (bolt-bound effect can re-introduce misalignment).
+
+SECTION 4: THERMAL GROWTH COMPENSATION
+Pumps and motors expand when hot. If operational temperature differential > 30°C between
+cold (installation) and hot (running), apply thermal growth correction: raise motor cold
+by an amount equal to α × ΔT × bearing-span-height (α = 12×10⁻⁶ /°C for steel).
+Most modern laser alignment tools have a thermal growth input screen.
