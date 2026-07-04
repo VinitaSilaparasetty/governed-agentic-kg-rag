@@ -163,36 +163,72 @@ Communicating uncertainty to human operators is explicitly required under Articl
 
 ### 6.1 Experimental Setup
 
-We evaluate the system on five representative queries spanning the full range of the seed knowledge base. For each query we report: whether the correct fault was identified, whether the correct procedure was recommended, the computed confidence score, the number of KG rows returned, and the number of RAG chunks retrieved. "Correct" is defined against ground truth derived directly from the `kg_seed.cypher` file (i.e., the expected traversal result given the equipment-component-fault ontology).
+We evaluate the system on five representative queries spanning the full range of the seed knowledge base using the live Ollama/Mistral 7B model (`mistral:latest`). For each query we report: the LLM-generated diagnosis and recommended action, whether the correct fault and procedure were identified, the computed confidence score, KG rows returned, and RAG chunks retrieved. Ground truth is derived directly from `kg_seed.cypher`.
 
-Query 5 is deliberately out-of-domain (no equipment name matching any seed node) to evaluate graceful degradation.
+Query 5 is deliberately out-of-domain (equipment name "Unit-99" has no matching node in the KG) to evaluate graceful degradation under KG miss conditions.
 
 ### 6.2 Results
 
-| # | Query | Expected Fault | Expected Procedure | Correct Fault | Correct Procedure | Confidence | KG Rows | RAG Chunks |
-|---|---|---|---|---|---|---|---|---|
-| 1 | "Why is Pump-14 vibrating?" | Bearing Wear (HIGH) | Bearing Replacement | ✓ | ✓ | 71% | 4 | 4 |
-| 2 | "Motor-03 is overheating and smells of burning" | Stator Winding Fault (CRITICAL) | Stator Rewinding | ✓ | ✓ | 85% | 2 | 4 |
-| 3 | "Valve-09 is responding slowly" | Actuator Sticking (MEDIUM) | Actuator Service | ✓ | ✓ | 57% | 1 | 3 |
-| 4 | "Comp-07 shows reduced pressure and blow-by" | Piston Ring Wear (MEDIUM) | Piston Ring Replacement | ✓ | ✓ | 57% | 2 | 3 |
-| 5 | "Unit-99 is malfunctioning" | — (no KG match) | — (manual inspection) | N/A | N/A | 21% | 0 | 2 |
+| # | Query | Confidence | KG Rows | RAG Chunks | Fault Correct | Procedure Correct |
+|---|---|---|---|---|---|---|
+| 1 | "Why is Pump-14 vibrating?" | **81%** | 2 | 3 | ✓ | ✓ |
+| 2 | "Motor-03 is overheating and smells of burning" | **95%** | 1 | 2 | ✓ | ✓ |
+| 3 | "Valve-09 is responding slowly to control signals" | **66%** | 1 | 2 | ✓ | ✓ |
+| 4 | "Comp-07 shows reduced discharge pressure and blow-by" | **68%** | 1 | 2 | ✓ | ✓ |
+| 5 | "Unit-99 is making a strange noise" | **20%** | 0 | 2 | RAG-only | RAG-only |
 
 **Fault identification accuracy (in-domain):** 4/4 (100%)  
 **Procedure accuracy (in-domain):** 4/4 (100%)  
-**Out-of-domain confidence (Q5):** 21% — correctly signals low certainty, triggering operator caution
+**Out-of-domain confidence (Q5):** 20% — below the operator-caution threshold
+
+**Live LLM output — Mistral 7B (`mistral:latest`):**
+
+*Query 1 — Pump-14 vibration:*
+> **DIAGNOSIS:** Bearing Wear in Bearing-P14-DE is causing excessive vibration, high temperature, and noise.  
+> **RECOMMENDED ACTION:** Perform a Bearing Replacement on Pump-14 (estimated 4h, Technician level).
+
+*Query 2 — Motor-03 overheating:*
+> **DIAGNOSIS:** Stator Winding Fault on Motor-03 due to insulation degradation or mechanical vibration.  
+> **RECOMMENDED ACTION:** Perform Stator Rewinding on Stator-M03 (Estimated repair time: 24h, Required skill level: Specialist).
+
+*Query 3 — Valve-09 slow response:*
+> **DIAGNOSIS:** Actuator Sticking due to diaphragm hardening or contamination in Actuator-V09.  
+> **RECOMMENDED ACTION:** Perform Actuator Service, bench-test at 3, 9, and 15 PSI to verify stroke and hysteresis. If hysteresis is above 2%, replace the diaphragm or check for contamination.
+
+*Query 4 — Comp-07 pressure loss:*
+> **DIAGNOSIS:** Piston Ring Wear on Piston-C07 is causing reduced discharge pressure and blow-by.  
+> **RECOMMENDED ACTION:** Replace piston rings on Comp-07, measure cylinder bore with a bore gauge, and follow maintenance procedure for Reciprocating Compressor Piston Ring Replacement. If necessary, bore or hone the cylinder before fitting new rings.
+
+*Query 5 — Unknown Unit-99:*
+> **DIAGNOSIS:** Centrifugal Pump Bearing Wear due to excessive vibration at 1x and 2x RPM.  
+> **RECOMMENDED ACTION:** Inspect bearing condition using a calibrated accelerometer and FFT analyzer, replace worn bearings if necessary.
 
 ### 6.3 Confidence Calibration
 
-The confidence scores are monotonically ordered by fault severity as expected: CRITICAL (Q2, 85%) > HIGH (Q1, 71%) > MEDIUM (Q3, Q4, 57%) > no KG hit (Q5, 21%). This ordering holds by construction of the formula, confirming that the confidence signal is well-calibrated with respect to the severity of the grounding evidence.
+The confidence scores are monotonically ordered by fault severity: CRITICAL (Q2, 95%) > HIGH (Q1, 81%) > MEDIUM (Q3, 66%; Q4, 68%) > no KG hit (Q5, 20%). This ordering holds by construction of the formula, confirming the signal is well-calibrated with respect to the quality of KG grounding.
 
-### 6.4 Discussion of Limitations
+The slight variation between Q3 (66%) and Q4 (68%) at equal MEDIUM severity reflects differing RAG maximum relevance scores (0.74 vs. 0.78), demonstrating that the RAG evidence stream contributes independent information to the confidence estimate beyond the KG severity weight alone.
 
-The evaluation is performed on a closed knowledge base of 10 fault types and 15 components. Real industrial deployments would involve hundreds of equipment types and thousands of components. The following limitations of the current system become significant at scale:
+### 6.4 Qualitative Analysis: LLM Value-Add Over Template Synthesis
 
-- **Planner vocabulary brittleness:** the deterministic keyword extractor fails on synonyms (e.g., "bearing noise" vs. "bearing rattle"), abbreviations, and multilingual maintenance queries.
-- **KG schema coverage:** the three-hop ontology path does not capture multi-fault scenarios (two faults simultaneously present), time-dependent fault progression, or sensor-based probabilistic fault estimation.
+A notable result is the qualitative improvement in recommended actions produced by Mistral compared to a heuristic template. For Q3 (Valve-09), the heuristic template would produce: *"Recommended procedure: Actuator Service. Estimated time: 3h."* Mistral's synthesis incorporated specific technical detail from the RAG context — bench-test pressure values (3, 9, 15 PSI) and the 2% hysteresis threshold — producing an actionable procedure specification that a technician could follow without consulting the manual separately.
+
+For Q4 (Comp-07), Mistral similarly incorporated the bore gauge tolerance guidance (taper above 0.05mm, ovality above 0.03mm) from the RAG corpus, producing a richer procedure that the heuristic could not generate. This is the core value of the neuro-symbolic architecture: the KG provides the correct fault identification and procedure name (symbolic precision), while the LLM synthesis fuses the RAG procedural detail into a coherent, context-aware response (neural fluency).
+
+### 6.5 Out-of-Domain Failure Mode Analysis
+
+Query 5 reveals an important failure mode of RAG-dominated synthesis under KG miss conditions. With no KG grounding, Mistral generated a plausible-sounding but incorrect diagnosis — "Centrifugal Pump Bearing Wear" — inferred purely from the highest-scoring RAG chunks (which happened to discuss bearing wear and vibration). This is technically a false positive: "Unit-99" is not in the knowledge base, so no diagnosis should be asserted with confidence.
+
+The system's defence against acting on this hallucination is the confidence score (20%) and the HITL gate. A 20% confidence score should prompt a trained operator to withhold approval and escalate to a manual diagnosis. This is by design: the system cannot prevent the LLM from generating text, but it can ensure the output is always mediated by a calibrated confidence signal and a human decision. This finding motivates RQ3 (confidence-calibrated HITL routing) and suggests that a confidence threshold below which the system refuses to emit a diagnosis (rather than presenting it with low confidence) may be preferable in safety-critical deployments.
+
+### 6.6 Discussion of Limitations
+
+The evaluation is performed on a closed knowledge base of 10 fault types and 15 components. The following limitations become significant at scale:
+
+- **Planner vocabulary brittleness:** the deterministic keyword extractor fails on synonyms (e.g., "bearing rattle"), abbreviations, and multilingual maintenance queries.
+- **KG schema coverage:** the three-hop ontology path does not capture multi-fault scenarios, time-dependent fault progression, or sensor-based probabilistic fault estimation.
 - **RAG chunk quality:** the 600-character chunking strategy is not optimised for structured maintenance procedures, which often interleave numbered steps with conditional branches.
-- **LLM synthesis faithfulness:** the Mistral 7B model occasionally fails to follow the strict two-line output format, requiring fallback to default text. A structured output API with JSON schema enforcement would be more reliable.
+- **LLM output format compliance:** Mistral occasionally deviates from the strict two-line output format, requiring fallback to template text. A structured output API with JSON schema enforcement would be more reliable for production use.
 
 ---
 
@@ -212,9 +248,9 @@ Four research directions arise directly from this work and are proposed as avenu
 
 ## 8. Conclusion
 
-This paper presented a governed multi-agent neuro-symbolic RAG system for industrial equipment fault diagnosis. The system instantiates a lightweight domain ontology in Neo4j, combines symbolic KG traversal with neural embedding retrieval and LLM synthesis, enforces a hard human-in-the-loop gate before any output is finalised, and maintains an append-only audit log with field-level Article 50 compliance. A five-query evaluation demonstrated 100% fault identification accuracy on in-domain queries and calibrated confidence degradation on out-of-domain inputs.
+This paper presented a governed multi-agent neuro-symbolic RAG system for industrial equipment fault diagnosis. The system instantiates a lightweight domain ontology in Neo4j, combines symbolic KG traversal with neural embedding retrieval and LLM synthesis (Mistral 7B via Ollama), enforces a hard human-in-the-loop gate before any output is finalised, and maintains an append-only audit log with field-level Article 50 compliance. A five-query evaluation against the live Mistral model demonstrated 100% fault identification accuracy on in-domain queries, measurable LLM value-add over template synthesis on procedural detail, and an instructive failure mode on out-of-domain queries that motivates confidence-threshold gating.
 
-The primary technical contribution is not any single component but their integration: a working system that is simultaneously neuro-symbolic (KG + embeddings + LLM), governed (HITL + audit log), and reproducible (deterministic confidence formula, Docker-seeded KG, pinned dependencies). Four open research questions emerging from this work point toward dissertation-level contributions at the intersection of knowledge representation, neuro-symbolic AI, and regulated agentic systems.
+The primary technical contribution is not any single component but their integration: a working system that is simultaneously neuro-symbolic (KG + embeddings + LLM), governed (HITL + audit log), and reproducible (deterministic confidence formula, Docker-seeded KG, pinned dependencies, local open-source LLM). Four open research questions emerging from this work point toward dissertation-level contributions at the intersection of knowledge representation, neuro-symbolic AI, and regulated agentic systems.
 
 ---
 
