@@ -154,8 +154,9 @@ the exact same results shown in the screenshots above.
 |------|---------------|-------|
 | Python | 3.11 or 3.12 | 3.13 not yet tested |
 | Docker Desktop | 4.x+ | for Neo4j; see no-Docker fallback below |
+| Ollama | 0.3+ | free local LLM runner — https://ollama.com |
 | Git | any | for cloning |
-| Disk space | ~2 GB | Neo4j image + fastembed model + Chroma |
+| Disk space | ~7 GB | Neo4j image + fastembed model + Chroma + Mistral 7B (4.4 GB) |
 
 No API keys, no GPU, no paid services required for the default configuration.
 
@@ -205,12 +206,43 @@ NEO4J_USER=neo4j
 NEO4J_PASSWORD=password
 EMBEDDING_PROVIDER=fastembed
 EMBEDDING_MODEL=BAAI/bge-small-en-v1.5
+LLM_PROVIDER=ollama
+LLM_MODEL=mistral:latest
 AUDIT_LOG_PATH=audit_log.jsonl
 ```
 
 ---
 
-### Step 4 — Start Neo4j
+### Step 4 — Install Ollama and pull Mistral
+
+Ollama runs the LLM locally — free, no API key, no GPU required.
+
+```bash
+# macOS
+brew install ollama
+
+# Or download directly from https://ollama.com
+```
+
+Then pull the Mistral 7B model (~4.4 GB, one-time download):
+
+```bash
+ollama pull mistral
+```
+
+Start the Ollama server (it runs in the background):
+
+```bash
+ollama serve
+```
+
+> **No Ollama?** The pipeline still works without it — the synthesis agent falls back to a
+> heuristic template output. Confidence scores and fault identification remain correct;
+> only the natural-language phrasing of diagnosis and recommended action is affected.
+
+---
+
+### Step 5 — Start Neo4j
 
 ```bash
 docker run -d \
@@ -243,7 +275,7 @@ If Docker is not available, use [Neo4j AuraDB Free](https://neo4j.com/cloud/aura
 
 ---
 
-### Step 5 — Seed the knowledge graph
+### Step 6 — Seed the knowledge graph
 
 ```bash
 python -m src.main --seed
@@ -266,7 +298,7 @@ This loads 47 Cypher statements creating:
 
 ---
 
-### Step 6 — Ingest maintenance manuals
+### Step 7 — Ingest maintenance manuals
 
 ```bash
 python -m src.main --ingest
@@ -288,7 +320,7 @@ Re-running `--ingest` will clear and rebuild the Chroma store from scratch.
 
 ---
 
-### Step 7 — Run a diagnostic query
+### Step 8 — Run a diagnostic query
 
 ```bash
 python -m src.main "Why is Pump-14 vibrating?"
@@ -303,7 +335,20 @@ you will see the candidate recommendation and a prompt:
 
 Type `A` and press Enter to approve. The final diagnosis is printed and logged.
 
-**Expected diagnosis (reproducible):**
+**Expected output (with Ollama/Mistral running):**
+```
+DIAGNOSIS:
+  Bearing Wear in Bearing-P14-DE is causing excessive vibration,
+  high temperature, and noise.
+
+RECOMMENDED ACTION:
+  Perform a Bearing Replacement on Pump-14 (estimated 4h, Technician level).
+
+Confidence  : 81%
+Sources     : Neo4j KG, bearing_wear.txt, vibration_diagnostics_general.txt, misalignment.txt
+```
+
+**Expected output (without Ollama — heuristic fallback):**
 ```
 DIAGNOSIS:
   The most likely fault on Pump-14 is Bearing Wear (severity: HIGH).
@@ -311,8 +356,7 @@ DIAGNOSIS:
   Typical symptoms: noise; high temperature; excessive vibration.
 
 RECOMMENDED ACTION:
-  Recommended procedure: Bearing Replacement.
-  Estimated time: 4h. Required skill: Technician.
+  Recommended procedure: Bearing Replacement. Estimated time: 4h. Required skill: Technician.
 
 Confidence  : 71%
 Sources     : Neo4j KG, cavitation.txt, vibration_diagnostics_general.txt, bearing_wear.txt
@@ -322,12 +366,14 @@ Sources     : Neo4j KG, cavitation.txt, vibration_diagnostics_general.txt, beari
 > `Pump-14` that `CAN_EXHIBIT` → `Bearing Wear` (severity: HIGH), which is `RESOLVED_BY`
 > → `Bearing Replacement`. The synthesis agent weights severity when picking the top fault,
 > so HIGH always wins over MEDIUM (Misalignment). The confidence formula is
-> `(kg_conf × 0.8 + rag_max_score × 0.6) / 1.4`, which with severity=HIGH (0.8) and
-> RAG top score ~0.59 yields ~71%. These values are deterministic given the seed data.
+> `(kg_conf × 0.8 + rag_max_score × 0.6) / 1.4`. With Ollama running, the RAG score is
+> higher because Mistral retrieves more relevant chunks (~0.58 top score → 81%). The
+> heuristic fallback uses a fixed RAG score estimate → 71%. Fault and procedure are
+> identical in both cases — only confidence and phrasing differ.
 
 ---
 
-### Step 8 — Inspect the audit log
+### Step 9 — Inspect the audit log
 
 ```bash
 cat audit_log.jsonl | python -m json.tool | head -80
@@ -341,7 +387,7 @@ The `session_id` field links all records from a single query invocation.
 
 ---
 
-### Step 9 — Run the test suite
+### Step 10 — Run the test suite
 
 No live Neo4j or Chroma required:
 
