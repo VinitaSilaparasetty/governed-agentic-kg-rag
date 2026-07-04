@@ -3,7 +3,7 @@ Synthesis agent: combines KG structured facts + RAG unstructured text into a
 candidate diagnosis and recommended action with a confidence score.
 
 LLM synthesis uses Ollama (free, local, open-source) by default.
-Set LLM_PROVIDER=ollama and LLM_MODEL=mistral:7b in .env, then:
+Set LLM_PROVIDER=ollama and LLM_MODEL=mistral:latest in .env, then:
   ollama pull mistral
 """
 import os
@@ -18,7 +18,7 @@ def _severity_weight(severity: str | None) -> float:
 def _get_llm():
     """Return a LangChain chat model configured from environment variables."""
     provider = os.getenv("LLM_PROVIDER", "ollama").lower()
-    model = os.getenv("LLM_MODEL", "mistral:7b")
+    model = os.getenv("LLM_MODEL", "mistral:latest")
     if provider == "ollama":
         from langchain_ollama import ChatOllama
         return ChatOllama(model=model, temperature=0)
@@ -179,7 +179,7 @@ def run_synthesis_agent(state: AgentState) -> AgentState:
         rag_context_snippets.append(f"[{chunk.source_file}] {first_line}")
 
     provider = os.getenv("LLM_PROVIDER", "ollama")
-    model = os.getenv("LLM_MODEL", "mistral:7b")
+    model = os.getenv("LLM_MODEL", "mistral:latest")
     llm_label = (
         f"LLM={provider}/{model}" if llm_used
         else f"LLM=unavailable({llm_error}); heuristic fallback used"
