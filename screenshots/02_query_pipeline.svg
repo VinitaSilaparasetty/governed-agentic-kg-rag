@@ -1,4 +1,4 @@
-<svg class="rich-terminal" viewBox="0 0 1116 1270.0" xmlns="http://www.w3.org/2000/svg">
+<svg class="rich-terminal" viewBox="0 0 1116 1245.6" xmlns="http://www.w3.org/2000/svg">
     <!-- Generated with Rich https://www.textualize.io -->
     <style>
 
@@ -19,249 +19,246 @@
         font-weight: 700;
     }
 
-    .terminal-2135501387-matrix {
+    .terminal-1051177552-matrix {
         font-family: Fira Code, monospace;
         font-size: 20px;
         line-height: 24.4px;
         font-variant-east-asian: full-width;
     }
 
-    .terminal-2135501387-title {
+    .terminal-1051177552-title {
         font-size: 18px;
         font-weight: bold;
         font-family: arial;
     }
 
-    .terminal-2135501387-r1 { fill: #c5c8c6 }
-.terminal-2135501387-r2 { fill: #68a0b3;font-weight: bold }
-.terminal-2135501387-r3 { fill: #868887 }
-.terminal-2135501387-r4 { fill: #4e707b;font-weight: bold }
-.terminal-2135501387-r5 { fill: #8d7b39 }
-.terminal-2135501387-r6 { fill: #1984e9 }
-.terminal-2135501387-r7 { fill: #d0b344;font-weight: bold }
-.terminal-2135501387-r8 { fill: #c5c8c6;font-style: italic; }
-.terminal-2135501387-r9 { fill: #68a0b3;font-weight: bold;font-style: italic; }
-.terminal-2135501387-r10 { fill: #98a84b;font-weight: bold }
-.terminal-2135501387-r11 { fill: #c5c8c6;font-weight: bold }
-.terminal-2135501387-r12 { fill: #cc555a;font-weight: bold }
-.terminal-2135501387-r13 { fill: #98729f;font-weight: bold }
-.terminal-2135501387-r14 { fill: #6b546f }
-.terminal-2135501387-r15 { fill: #a92a59 }
+    .terminal-1051177552-r1 { fill: #c5c8c6 }
+.terminal-1051177552-r2 { fill: #68a0b3;font-weight: bold }
+.terminal-1051177552-r3 { fill: #868887 }
+.terminal-1051177552-r4 { fill: #4e707b;font-weight: bold }
+.terminal-1051177552-r5 { fill: #8d7b39 }
+.terminal-1051177552-r6 { fill: #1984e9 }
+.terminal-1051177552-r7 { fill: #d0b344;font-weight: bold }
+.terminal-1051177552-r8 { fill: #c5c8c6;font-style: italic; }
+.terminal-1051177552-r9 { fill: #68a0b3;font-weight: bold;font-style: italic; }
+.terminal-1051177552-r10 { fill: #98a84b;font-weight: bold }
+.terminal-1051177552-r11 { fill: #c5c8c6;font-weight: bold }
+.terminal-1051177552-r12 { fill: #cc555a;font-weight: bold }
+.terminal-1051177552-r13 { fill: #d0b344 }
+.terminal-1051177552-r14 { fill: #98729f }
+.terminal-1051177552-r15 { fill: #6b546f }
+.terminal-1051177552-r16 { fill: #a92a59 }
     </style>
 
     <defs>
-    <clipPath id="terminal-2135501387-clip-terminal">
-      <rect x="0" y="0" width="1097.0" height="1219.0" />
+    <clipPath id="terminal-1051177552-clip-terminal">
+      <rect x="0" y="0" width="1097.0" height="1194.6" />
     </clipPath>
-    <clipPath id="terminal-2135501387-line-0">
+    <clipPath id="terminal-1051177552-line-0">
     <rect x="0" y="1.5" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-1">
+<clipPath id="terminal-1051177552-line-1">
     <rect x="0" y="25.9" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-2">
+<clipPath id="terminal-1051177552-line-2">
     <rect x="0" y="50.3" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-3">
+<clipPath id="terminal-1051177552-line-3">
     <rect x="0" y="74.7" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-4">
+<clipPath id="terminal-1051177552-line-4">
     <rect x="0" y="99.1" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-5">
+<clipPath id="terminal-1051177552-line-5">
     <rect x="0" y="123.5" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-6">
+<clipPath id="terminal-1051177552-line-6">
     <rect x="0" y="147.9" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-7">
+<clipPath id="terminal-1051177552-line-7">
     <rect x="0" y="172.3" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-8">
+<clipPath id="terminal-1051177552-line-8">
     <rect x="0" y="196.7" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-9">
+<clipPath id="terminal-1051177552-line-9">
     <rect x="0" y="221.1" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-10">
+<clipPath id="terminal-1051177552-line-10">
     <rect x="0" y="245.5" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-11">
+<clipPath id="terminal-1051177552-line-11">
     <rect x="0" y="269.9" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-12">
+<clipPath id="terminal-1051177552-line-12">
     <rect x="0" y="294.3" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-13">
+<clipPath id="terminal-1051177552-line-13">
     <rect x="0" y="318.7" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-14">
+<clipPath id="terminal-1051177552-line-14">
     <rect x="0" y="343.1" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-15">
+<clipPath id="terminal-1051177552-line-15">
     <rect x="0" y="367.5" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-16">
+<clipPath id="terminal-1051177552-line-16">
     <rect x="0" y="391.9" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-17">
+<clipPath id="terminal-1051177552-line-17">
     <rect x="0" y="416.3" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-18">
+<clipPath id="terminal-1051177552-line-18">
     <rect x="0" y="440.7" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-19">
+<clipPath id="terminal-1051177552-line-19">
     <rect x="0" y="465.1" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-20">
+<clipPath id="terminal-1051177552-line-20">
     <rect x="0" y="489.5" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-21">
+<clipPath id="terminal-1051177552-line-21">
     <rect x="0" y="513.9" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-22">
+<clipPath id="terminal-1051177552-line-22">
     <rect x="0" y="538.3" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-23">
+<clipPath id="terminal-1051177552-line-23">
     <rect x="0" y="562.7" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-24">
+<clipPath id="terminal-1051177552-line-24">
     <rect x="0" y="587.1" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-25">
+<clipPath id="terminal-1051177552-line-25">
     <rect x="0" y="611.5" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-26">
+<clipPath id="terminal-1051177552-line-26">
     <rect x="0" y="635.9" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-27">
+<clipPath id="terminal-1051177552-line-27">
     <rect x="0" y="660.3" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-28">
+<clipPath id="terminal-1051177552-line-28">
     <rect x="0" y="684.7" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-29">
+<clipPath id="terminal-1051177552-line-29">
     <rect x="0" y="709.1" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-30">
+<clipPath id="terminal-1051177552-line-30">
     <rect x="0" y="733.5" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-31">
+<clipPath id="terminal-1051177552-line-31">
     <rect x="0" y="757.9" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-32">
+<clipPath id="terminal-1051177552-line-32">
     <rect x="0" y="782.3" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-33">
+<clipPath id="terminal-1051177552-line-33">
     <rect x="0" y="806.7" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-34">
+<clipPath id="terminal-1051177552-line-34">
     <rect x="0" y="831.1" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-35">
+<clipPath id="terminal-1051177552-line-35">
     <rect x="0" y="855.5" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-36">
+<clipPath id="terminal-1051177552-line-36">
     <rect x="0" y="879.9" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-37">
+<clipPath id="terminal-1051177552-line-37">
     <rect x="0" y="904.3" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-38">
+<clipPath id="terminal-1051177552-line-38">
     <rect x="0" y="928.7" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-39">
+<clipPath id="terminal-1051177552-line-39">
     <rect x="0" y="953.1" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-40">
+<clipPath id="terminal-1051177552-line-40">
     <rect x="0" y="977.5" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-41">
+<clipPath id="terminal-1051177552-line-41">
     <rect x="0" y="1001.9" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-42">
+<clipPath id="terminal-1051177552-line-42">
     <rect x="0" y="1026.3" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-43">
+<clipPath id="terminal-1051177552-line-43">
     <rect x="0" y="1050.7" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-44">
+<clipPath id="terminal-1051177552-line-44">
     <rect x="0" y="1075.1" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-45">
+<clipPath id="terminal-1051177552-line-45">
     <rect x="0" y="1099.5" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-46">
+<clipPath id="terminal-1051177552-line-46">
     <rect x="0" y="1123.9" width="1098" height="24.65"/>
             </clipPath>
-<clipPath id="terminal-2135501387-line-47">
+<clipPath id="terminal-1051177552-line-47">
     <rect x="0" y="1148.3" width="1098" height="24.65"/>
-            </clipPath>
-<clipPath id="terminal-2135501387-line-48">
-    <rect x="0" y="1172.7" width="1098" height="24.65"/>
             </clipPath>
     </defs>
 
-    <rect fill="#292929" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="1114" height="1268" rx="8"/><text class="terminal-2135501387-title" fill="#c5c8c6" text-anchor="middle" x="557" y="27">Full&#160;pipeline:&#160;query&#160;→&#160;diagnosis&#160;→&#160;human&#160;approval</text>
+    <rect fill="#292929" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="1114" height="1243.6" rx="8"/><text class="terminal-1051177552-title" fill="#c5c8c6" text-anchor="middle" x="557" y="27">Full&#160;pipeline:&#160;query&#160;→&#160;diagnosis&#160;→&#160;human&#160;approval</text>
             <g transform="translate(26,22)">
             <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
             <circle cx="22" cy="0" r="7" fill="#febc2e"/>
             <circle cx="44" cy="0" r="7" fill="#28c840"/>
             </g>
         
-    <g transform="translate(9, 41)" clip-path="url(#terminal-2135501387-clip-terminal)">
+    <g transform="translate(9, 41)" clip-path="url(#terminal-1051177552-clip-terminal)">
     
-    <g class="terminal-2135501387-matrix">
-    <text class="terminal-2135501387-r1" x="1098" y="20" textLength="12.2" clip-path="url(#terminal-2135501387-line-0)">
-</text><text class="terminal-2135501387-r2" x="0" y="44.4" textLength="256.2" clip-path="url(#terminal-2135501387-line-1)">$&#160;python&#160;-m&#160;src.main&#160;</text><text class="terminal-2135501387-r2" x="256.2" y="44.4" textLength="329.4" clip-path="url(#terminal-2135501387-line-1)">&quot;Why&#160;is&#160;Pump-14&#160;vibrating?&quot;</text><text class="terminal-2135501387-r1" x="1098" y="44.4" textLength="12.2" clip-path="url(#terminal-2135501387-line-1)">
-</text><text class="terminal-2135501387-r1" x="1098" y="68.8" textLength="12.2" clip-path="url(#terminal-2135501387-line-2)">
-</text><text class="terminal-2135501387-r3" x="0" y="93.2" textLength="231.8" clip-path="url(#terminal-2135501387-line-3)">Query:&#160;Why&#160;is&#160;Pump-</text><text class="terminal-2135501387-r4" x="231.8" y="93.2" textLength="24.4" clip-path="url(#terminal-2135501387-line-3)">14</text><text class="terminal-2135501387-r3" x="256.2" y="93.2" textLength="134.2" clip-path="url(#terminal-2135501387-line-3)">&#160;vibrating?</text><text class="terminal-2135501387-r1" x="1098" y="93.2" textLength="12.2" clip-path="url(#terminal-2135501387-line-3)">
-</text><text class="terminal-2135501387-r3" x="0" y="117.6" textLength="195.2" clip-path="url(#terminal-2135501387-line-4)">Running&#160;pipeline</text><text class="terminal-2135501387-r5" x="195.2" y="117.6" textLength="36.6" clip-path="url(#terminal-2135501387-line-4)">...</text><text class="terminal-2135501387-r1" x="1098" y="117.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-4)">
-</text><text class="terminal-2135501387-r1" x="1098" y="142" textLength="12.2" clip-path="url(#terminal-2135501387-line-5)">
-</text><text class="terminal-2135501387-r6" x="0" y="166.4" textLength="732" clip-path="url(#terminal-2135501387-line-6)">════════════════════════════════════════════════════════════</text><text class="terminal-2135501387-r1" x="1098" y="166.4" textLength="12.2" clip-path="url(#terminal-2135501387-line-6)">
-</text><text class="terminal-2135501387-r7" x="0" y="190.8" textLength="622.2" clip-path="url(#terminal-2135501387-line-7)">&#160;&#160;CANDIDATE&#160;RECOMMENDATION&#160;—&#160;PENDING&#160;HUMAN&#160;APPROVAL</text><text class="terminal-2135501387-r1" x="1098" y="190.8" textLength="12.2" clip-path="url(#terminal-2135501387-line-7)">
-</text><text class="terminal-2135501387-r6" x="0" y="215.2" textLength="732" clip-path="url(#terminal-2135501387-line-8)">════════════════════════════════════════════════════════════</text><text class="terminal-2135501387-r1" x="1098" y="215.2" textLength="12.2" clip-path="url(#terminal-2135501387-line-8)">
-</text><text class="terminal-2135501387-r1" x="0" y="239.6" textLength="195.2" clip-path="url(#terminal-2135501387-line-9)">&#160;&#160;Query&#160;&#160;&#160;&#160;&#160;&#160;&#160;:&#160;</text><text class="terminal-2135501387-r8" x="195.2" y="239.6" textLength="146.4" clip-path="url(#terminal-2135501387-line-9)">Why&#160;is&#160;Pump-</text><text class="terminal-2135501387-r9" x="341.6" y="239.6" textLength="24.4" clip-path="url(#terminal-2135501387-line-9)">14</text><text class="terminal-2135501387-r8" x="366" y="239.6" textLength="134.2" clip-path="url(#terminal-2135501387-line-9)">&#160;vibrating?</text><text class="terminal-2135501387-r1" x="1098" y="239.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-9)">
-</text><text class="terminal-2135501387-r1" x="0" y="264" textLength="195.2" clip-path="url(#terminal-2135501387-line-10)">&#160;&#160;Confidence&#160;&#160;:&#160;</text><text class="terminal-2135501387-r10" x="195.2" y="264" textLength="24.4" clip-path="url(#terminal-2135501387-line-10)">71</text><text class="terminal-2135501387-r10" x="219.6" y="264" textLength="12.2" clip-path="url(#terminal-2135501387-line-10)">%</text><text class="terminal-2135501387-r1" x="1098" y="264" textLength="12.2" clip-path="url(#terminal-2135501387-line-10)">
-</text><text class="terminal-2135501387-r1" x="0" y="288.4" textLength="939.4" clip-path="url(#terminal-2135501387-line-11)">&#160;&#160;Sources&#160;&#160;&#160;&#160;&#160;:&#160;Neo4j&#160;KG,&#160;bearing_wear.txt,&#160;vibration_diagnostics_general.txt</text><text class="terminal-2135501387-r1" x="1098" y="288.4" textLength="12.2" clip-path="url(#terminal-2135501387-line-11)">
-</text><text class="terminal-2135501387-r1" x="1098" y="312.8" textLength="12.2" clip-path="url(#terminal-2135501387-line-12)">
-</text><text class="terminal-2135501387-r11" x="24.4" y="337.2" textLength="122" clip-path="url(#terminal-2135501387-line-13)">DIAGNOSIS:</text><text class="terminal-2135501387-r1" x="1098" y="337.2" textLength="12.2" clip-path="url(#terminal-2135501387-line-13)">
-</text><text class="terminal-2135501387-r1" x="0" y="361.6" textLength="390.4" clip-path="url(#terminal-2135501387-line-14)">&#160;&#160;The&#160;most&#160;likely&#160;fault&#160;on&#160;Pump-</text><text class="terminal-2135501387-r2" x="390.4" y="361.6" textLength="24.4" clip-path="url(#terminal-2135501387-line-14)">14</text><text class="terminal-2135501387-r1" x="414.8" y="361.6" textLength="48.8" clip-path="url(#terminal-2135501387-line-14)">&#160;is&#160;</text><text class="terminal-2135501387-r12" x="463.6" y="361.6" textLength="146.4" clip-path="url(#terminal-2135501387-line-14)">Bearing&#160;Wear</text><text class="terminal-2135501387-r11" x="622.2" y="361.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-14)">(</text><text class="terminal-2135501387-r1" x="634.4" y="361.6" textLength="170.8" clip-path="url(#terminal-2135501387-line-14)">severity:&#160;HIGH</text><text class="terminal-2135501387-r11" x="805.2" y="361.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-14)">)</text><text class="terminal-2135501387-r1" x="817.4" y="361.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-14)">.</text><text class="terminal-2135501387-r1" x="1098" y="361.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-14)">
-</text><text class="terminal-2135501387-r1" x="0" y="386" textLength="134.2" clip-path="url(#terminal-2135501387-line-15)">&#160;&#160;Affected&#160;</text><text class="terminal-2135501387-r13" x="134.2" y="386" textLength="109.8" clip-path="url(#terminal-2135501387-line-15)">component</text><text class="terminal-2135501387-r11" x="244" y="386" textLength="12.2" clip-path="url(#terminal-2135501387-line-15)">(</text><text class="terminal-2135501387-r1" x="256.2" y="386" textLength="12.2" clip-path="url(#terminal-2135501387-line-15)">s</text><text class="terminal-2135501387-r11" x="268.4" y="386" textLength="12.2" clip-path="url(#terminal-2135501387-line-15)">)</text><text class="terminal-2135501387-r1" x="280.6" y="386" textLength="207.4" clip-path="url(#terminal-2135501387-line-15)">:&#160;Bearing-P14-DE.</text><text class="terminal-2135501387-r1" x="1098" y="386" textLength="12.2" clip-path="url(#terminal-2135501387-line-15)">
-</text><text class="terminal-2135501387-r1" x="0" y="410.4" textLength="793" clip-path="url(#terminal-2135501387-line-16)">&#160;&#160;Typical&#160;symptoms:&#160;noise;&#160;high&#160;temperature;&#160;excessive&#160;vibration.</text><text class="terminal-2135501387-r1" x="1098" y="410.4" textLength="12.2" clip-path="url(#terminal-2135501387-line-16)">
-</text><text class="terminal-2135501387-r1" x="1098" y="434.8" textLength="12.2" clip-path="url(#terminal-2135501387-line-17)">
-</text><text class="terminal-2135501387-r11" x="24.4" y="459.2" textLength="231.8" clip-path="url(#terminal-2135501387-line-18)">RECOMMENDED&#160;ACTION:</text><text class="terminal-2135501387-r1" x="1098" y="459.2" textLength="12.2" clip-path="url(#terminal-2135501387-line-18)">
-</text><text class="terminal-2135501387-r1" x="0" y="483.6" textLength="305" clip-path="url(#terminal-2135501387-line-19)">&#160;&#160;Recommended&#160;procedure:&#160;</text><text class="terminal-2135501387-r11" x="305" y="483.6" textLength="231.8" clip-path="url(#terminal-2135501387-line-19)">Bearing&#160;Replacement</text><text class="terminal-2135501387-r1" x="536.8" y="483.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-19)">.</text><text class="terminal-2135501387-r1" x="1098" y="483.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-19)">
-</text><text class="terminal-2135501387-r1" x="0" y="508" textLength="610" clip-path="url(#terminal-2135501387-line-20)">&#160;&#160;Estimated&#160;time:&#160;4h.&#160;&#160;Required&#160;skill:&#160;Technician.</text><text class="terminal-2135501387-r1" x="1098" y="508" textLength="12.2" clip-path="url(#terminal-2135501387-line-20)">
-</text><text class="terminal-2135501387-r1" x="1098" y="532.4" textLength="12.2" clip-path="url(#terminal-2135501387-line-21)">
-</text><text class="terminal-2135501387-r11" x="24.4" y="556.8" textLength="122" clip-path="url(#terminal-2135501387-line-22)">REASONING:</text><text class="terminal-2135501387-r1" x="1098" y="556.8" textLength="12.2" clip-path="url(#terminal-2135501387-line-22)">
-</text><text class="terminal-2135501387-r1" x="0" y="581.2" textLength="170.8" clip-path="url(#terminal-2135501387-line-23)">&#160;&#160;KG&#160;returned&#160;</text><text class="terminal-2135501387-r2" x="170.8" y="581.2" textLength="12.2" clip-path="url(#terminal-2135501387-line-23)">4</text><text class="terminal-2135501387-r1" x="183" y="581.2" textLength="219.6" clip-path="url(#terminal-2135501387-line-23)">&#160;fact&#160;rows&#160;across&#160;</text><text class="terminal-2135501387-r2" x="402.6" y="581.2" textLength="12.2" clip-path="url(#terminal-2135501387-line-23)">2</text><text class="terminal-2135501387-r1" x="414.8" y="581.2" textLength="244" clip-path="url(#terminal-2135501387-line-23)">&#160;unique&#160;fault&#160;types.</text><text class="terminal-2135501387-r1" x="1098" y="581.2" textLength="12.2" clip-path="url(#terminal-2135501387-line-23)">
-</text><text class="terminal-2135501387-r1" x="0" y="605.6" textLength="195.2" clip-path="url(#terminal-2135501387-line-24)">&#160;&#160;RAG&#160;retrieved&#160;</text><text class="terminal-2135501387-r2" x="195.2" y="605.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-24)">4</text><text class="terminal-2135501387-r1" x="207.4" y="605.6" textLength="183" clip-path="url(#terminal-2135501387-line-24)">&#160;manual&#160;chunks.</text><text class="terminal-2135501387-r1" x="1098" y="605.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-24)">
-</text><text class="terminal-2135501387-r1" x="0" y="630" textLength="183" clip-path="url(#terminal-2135501387-line-25)">&#160;&#160;RAG&#160;context:&#160;</text><text class="terminal-2135501387-r1" x="183" y="630" textLength="475.8" clip-path="url(#terminal-2135501387-line-25)">&#160;TITLE:&#160;Centrifugal&#160;Pump&#160;Bearing&#160;Wear&#160;|</text><text class="terminal-2135501387-r1" x="1098" y="630" textLength="12.2" clip-path="url(#terminal-2135501387-line-25)">
-</text><text class="terminal-2135501387-r1" x="183" y="654.4" textLength="451.4" clip-path="url(#terminal-2135501387-line-26)">&#160;TITLE:&#160;General&#160;Vibration&#160;Diagnostics</text><text class="terminal-2135501387-r1" x="1098" y="654.4" textLength="12.2" clip-path="url(#terminal-2135501387-line-26)">
-</text><text class="terminal-2135501387-r6" x="0" y="678.8" textLength="732" clip-path="url(#terminal-2135501387-line-27)">════════════════════════════════════════════════════════════</text><text class="terminal-2135501387-r1" x="1098" y="678.8" textLength="12.2" clip-path="url(#terminal-2135501387-line-27)">
-</text><text class="terminal-2135501387-r1" x="1098" y="703.2" textLength="12.2" clip-path="url(#terminal-2135501387-line-28)">
-</text><text class="terminal-2135501387-r11" x="24.4" y="727.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-29)">[</text><text class="terminal-2135501387-r1" x="36.6" y="727.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-29)">A</text><text class="terminal-2135501387-r11" x="48.8" y="727.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-29)">]</text><text class="terminal-2135501387-r1" x="61" y="727.6" textLength="97.6" clip-path="url(#terminal-2135501387-line-29)">pprove&#160;&#160;</text><text class="terminal-2135501387-r11" x="158.6" y="727.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-29)">[</text><text class="terminal-2135501387-r1" x="170.8" y="727.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-29)">R</text><text class="terminal-2135501387-r11" x="183" y="727.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-29)">]</text><text class="terminal-2135501387-r1" x="195.2" y="727.6" textLength="85.4" clip-path="url(#terminal-2135501387-line-29)">eject&#160;&#160;</text><text class="terminal-2135501387-r11" x="280.6" y="727.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-29)">[</text><text class="terminal-2135501387-r1" x="292.8" y="727.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-29)">E</text><text class="terminal-2135501387-r11" x="305" y="727.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-29)">]</text><text class="terminal-2135501387-r1" x="317.2" y="727.6" textLength="85.4" clip-path="url(#terminal-2135501387-line-29)">dit&#160;&#160;&gt;&#160;</text><text class="terminal-2135501387-r10" x="402.6" y="727.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-29)">A</text><text class="terminal-2135501387-r1" x="1098" y="727.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-29)">
-</text><text class="terminal-2135501387-r1" x="1098" y="752" textLength="12.2" clip-path="url(#terminal-2135501387-line-30)">
-</text><text class="terminal-2135501387-r6" x="0" y="776.4" textLength="732" clip-path="url(#terminal-2135501387-line-31)">════════════════════════════════════════════════════════════</text><text class="terminal-2135501387-r1" x="1098" y="776.4" textLength="12.2" clip-path="url(#terminal-2135501387-line-31)">
-</text><text class="terminal-2135501387-r10" x="0" y="800.8" textLength="183" clip-path="url(#terminal-2135501387-line-32)">&#160;&#160;FINAL&#160;OUTPUT&#160;</text><text class="terminal-2135501387-r10" x="183" y="800.8" textLength="12.2" clip-path="url(#terminal-2135501387-line-32)">(</text><text class="terminal-2135501387-r10" x="195.2" y="800.8" textLength="170.8" clip-path="url(#terminal-2135501387-line-32)">human-approved</text><text class="terminal-2135501387-r10" x="366" y="800.8" textLength="12.2" clip-path="url(#terminal-2135501387-line-32)">)</text><text class="terminal-2135501387-r1" x="1098" y="800.8" textLength="12.2" clip-path="url(#terminal-2135501387-line-32)">
-</text><text class="terminal-2135501387-r6" x="0" y="825.2" textLength="732" clip-path="url(#terminal-2135501387-line-33)">════════════════════════════════════════════════════════════</text><text class="terminal-2135501387-r1" x="1098" y="825.2" textLength="12.2" clip-path="url(#terminal-2135501387-line-33)">
-</text><text class="terminal-2135501387-r1" x="1098" y="849.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-34)">
-</text><text class="terminal-2135501387-r11" x="24.4" y="874" textLength="122" clip-path="url(#terminal-2135501387-line-35)">DIAGNOSIS:</text><text class="terminal-2135501387-r1" x="1098" y="874" textLength="12.2" clip-path="url(#terminal-2135501387-line-35)">
-</text><text class="terminal-2135501387-r1" x="0" y="898.4" textLength="390.4" clip-path="url(#terminal-2135501387-line-36)">&#160;&#160;The&#160;most&#160;likely&#160;fault&#160;on&#160;Pump-</text><text class="terminal-2135501387-r2" x="390.4" y="898.4" textLength="24.4" clip-path="url(#terminal-2135501387-line-36)">14</text><text class="terminal-2135501387-r1" x="414.8" y="898.4" textLength="48.8" clip-path="url(#terminal-2135501387-line-36)">&#160;is&#160;</text><text class="terminal-2135501387-r12" x="463.6" y="898.4" textLength="146.4" clip-path="url(#terminal-2135501387-line-36)">Bearing&#160;Wear</text><text class="terminal-2135501387-r11" x="622.2" y="898.4" textLength="12.2" clip-path="url(#terminal-2135501387-line-36)">(</text><text class="terminal-2135501387-r1" x="634.4" y="898.4" textLength="170.8" clip-path="url(#terminal-2135501387-line-36)">severity:&#160;HIGH</text><text class="terminal-2135501387-r11" x="805.2" y="898.4" textLength="12.2" clip-path="url(#terminal-2135501387-line-36)">)</text><text class="terminal-2135501387-r1" x="817.4" y="898.4" textLength="12.2" clip-path="url(#terminal-2135501387-line-36)">.</text><text class="terminal-2135501387-r1" x="1098" y="898.4" textLength="12.2" clip-path="url(#terminal-2135501387-line-36)">
-</text><text class="terminal-2135501387-r1" x="0" y="922.8" textLength="134.2" clip-path="url(#terminal-2135501387-line-37)">&#160;&#160;Affected&#160;</text><text class="terminal-2135501387-r13" x="134.2" y="922.8" textLength="109.8" clip-path="url(#terminal-2135501387-line-37)">component</text><text class="terminal-2135501387-r11" x="244" y="922.8" textLength="12.2" clip-path="url(#terminal-2135501387-line-37)">(</text><text class="terminal-2135501387-r1" x="256.2" y="922.8" textLength="12.2" clip-path="url(#terminal-2135501387-line-37)">s</text><text class="terminal-2135501387-r11" x="268.4" y="922.8" textLength="12.2" clip-path="url(#terminal-2135501387-line-37)">)</text><text class="terminal-2135501387-r1" x="280.6" y="922.8" textLength="207.4" clip-path="url(#terminal-2135501387-line-37)">:&#160;Bearing-P14-DE.</text><text class="terminal-2135501387-r1" x="1098" y="922.8" textLength="12.2" clip-path="url(#terminal-2135501387-line-37)">
-</text><text class="terminal-2135501387-r1" x="0" y="947.2" textLength="793" clip-path="url(#terminal-2135501387-line-38)">&#160;&#160;Typical&#160;symptoms:&#160;noise;&#160;high&#160;temperature;&#160;excessive&#160;vibration.</text><text class="terminal-2135501387-r1" x="1098" y="947.2" textLength="12.2" clip-path="url(#terminal-2135501387-line-38)">
-</text><text class="terminal-2135501387-r1" x="1098" y="971.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-39)">
-</text><text class="terminal-2135501387-r11" x="24.4" y="996" textLength="231.8" clip-path="url(#terminal-2135501387-line-40)">RECOMMENDED&#160;ACTION:</text><text class="terminal-2135501387-r1" x="1098" y="996" textLength="12.2" clip-path="url(#terminal-2135501387-line-40)">
-</text><text class="terminal-2135501387-r1" x="0" y="1020.4" textLength="305" clip-path="url(#terminal-2135501387-line-41)">&#160;&#160;Recommended&#160;procedure:&#160;</text><text class="terminal-2135501387-r11" x="305" y="1020.4" textLength="231.8" clip-path="url(#terminal-2135501387-line-41)">Bearing&#160;Replacement</text><text class="terminal-2135501387-r1" x="536.8" y="1020.4" textLength="12.2" clip-path="url(#terminal-2135501387-line-41)">.</text><text class="terminal-2135501387-r1" x="1098" y="1020.4" textLength="12.2" clip-path="url(#terminal-2135501387-line-41)">
-</text><text class="terminal-2135501387-r1" x="0" y="1044.8" textLength="610" clip-path="url(#terminal-2135501387-line-42)">&#160;&#160;Estimated&#160;time:&#160;4h.&#160;&#160;Required&#160;skill:&#160;Technician.</text><text class="terminal-2135501387-r1" x="1098" y="1044.8" textLength="12.2" clip-path="url(#terminal-2135501387-line-42)">
-</text><text class="terminal-2135501387-r1" x="1098" y="1069.2" textLength="12.2" clip-path="url(#terminal-2135501387-line-43)">
-</text><text class="terminal-2135501387-r1" x="0" y="1093.6" textLength="195.2" clip-path="url(#terminal-2135501387-line-44)">&#160;&#160;Confidence&#160;&#160;:&#160;</text><text class="terminal-2135501387-r10" x="195.2" y="1093.6" textLength="24.4" clip-path="url(#terminal-2135501387-line-44)">71</text><text class="terminal-2135501387-r10" x="219.6" y="1093.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-44)">%</text><text class="terminal-2135501387-r1" x="1098" y="1093.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-44)">
-</text><text class="terminal-2135501387-r1" x="0" y="1118" textLength="939.4" clip-path="url(#terminal-2135501387-line-45)">&#160;&#160;Sources&#160;&#160;&#160;&#160;&#160;:&#160;Neo4j&#160;KG,&#160;cavitation.txt,&#160;vibration_diagnostics_general.txt,&#160;</text><text class="terminal-2135501387-r1" x="1098" y="1118" textLength="12.2" clip-path="url(#terminal-2135501387-line-45)">
-</text><text class="terminal-2135501387-r1" x="0" y="1142.4" textLength="195.2" clip-path="url(#terminal-2135501387-line-46)">bearing_wear.txt</text><text class="terminal-2135501387-r1" x="1098" y="1142.4" textLength="12.2" clip-path="url(#terminal-2135501387-line-46)">
-</text><text class="terminal-2135501387-r1" x="1098" y="1166.8" textLength="12.2" clip-path="url(#terminal-2135501387-line-47)">
-</text><text class="terminal-2135501387-r1" x="0" y="1191.2" textLength="195.2" clip-path="url(#terminal-2135501387-line-48)">&#160;&#160;Audit&#160;log&#160;&#160;&#160;:&#160;</text><text class="terminal-2135501387-r14" x="195.2" y="1191.2" textLength="427" clip-path="url(#terminal-2135501387-line-48)">/Users/you/governed-agentic-kg-rag/</text><text class="terminal-2135501387-r15" x="622.2" y="1191.2" textLength="183" clip-path="url(#terminal-2135501387-line-48)">audit_log.jsonl</text><text class="terminal-2135501387-r1" x="1098" y="1191.2" textLength="12.2" clip-path="url(#terminal-2135501387-line-48)">
-</text><text class="terminal-2135501387-r6" x="0" y="1215.6" textLength="732" clip-path="url(#terminal-2135501387-line-49)">════════════════════════════════════════════════════════════</text><text class="terminal-2135501387-r1" x="1098" y="1215.6" textLength="12.2" clip-path="url(#terminal-2135501387-line-49)">
+    <g class="terminal-1051177552-matrix">
+    <text class="terminal-1051177552-r1" x="1098" y="20" textLength="12.2" clip-path="url(#terminal-1051177552-line-0)">
+</text><text class="terminal-1051177552-r2" x="0" y="44.4" textLength="256.2" clip-path="url(#terminal-1051177552-line-1)">$&#160;python&#160;-m&#160;src.main&#160;</text><text class="terminal-1051177552-r2" x="256.2" y="44.4" textLength="329.4" clip-path="url(#terminal-1051177552-line-1)">&quot;Why&#160;is&#160;Pump-14&#160;vibrating?&quot;</text><text class="terminal-1051177552-r1" x="1098" y="44.4" textLength="12.2" clip-path="url(#terminal-1051177552-line-1)">
+</text><text class="terminal-1051177552-r1" x="1098" y="68.8" textLength="12.2" clip-path="url(#terminal-1051177552-line-2)">
+</text><text class="terminal-1051177552-r3" x="0" y="93.2" textLength="231.8" clip-path="url(#terminal-1051177552-line-3)">Query:&#160;Why&#160;is&#160;Pump-</text><text class="terminal-1051177552-r4" x="231.8" y="93.2" textLength="24.4" clip-path="url(#terminal-1051177552-line-3)">14</text><text class="terminal-1051177552-r3" x="256.2" y="93.2" textLength="134.2" clip-path="url(#terminal-1051177552-line-3)">&#160;vibrating?</text><text class="terminal-1051177552-r1" x="1098" y="93.2" textLength="12.2" clip-path="url(#terminal-1051177552-line-3)">
+</text><text class="terminal-1051177552-r3" x="0" y="117.6" textLength="195.2" clip-path="url(#terminal-1051177552-line-4)">Running&#160;pipeline</text><text class="terminal-1051177552-r5" x="195.2" y="117.6" textLength="36.6" clip-path="url(#terminal-1051177552-line-4)">...</text><text class="terminal-1051177552-r1" x="1098" y="117.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-4)">
+</text><text class="terminal-1051177552-r1" x="1098" y="142" textLength="12.2" clip-path="url(#terminal-1051177552-line-5)">
+</text><text class="terminal-1051177552-r6" x="0" y="166.4" textLength="732" clip-path="url(#terminal-1051177552-line-6)">════════════════════════════════════════════════════════════</text><text class="terminal-1051177552-r1" x="1098" y="166.4" textLength="12.2" clip-path="url(#terminal-1051177552-line-6)">
+</text><text class="terminal-1051177552-r7" x="0" y="190.8" textLength="622.2" clip-path="url(#terminal-1051177552-line-7)">&#160;&#160;CANDIDATE&#160;RECOMMENDATION&#160;—&#160;PENDING&#160;HUMAN&#160;APPROVAL</text><text class="terminal-1051177552-r1" x="1098" y="190.8" textLength="12.2" clip-path="url(#terminal-1051177552-line-7)">
+</text><text class="terminal-1051177552-r6" x="0" y="215.2" textLength="732" clip-path="url(#terminal-1051177552-line-8)">════════════════════════════════════════════════════════════</text><text class="terminal-1051177552-r1" x="1098" y="215.2" textLength="12.2" clip-path="url(#terminal-1051177552-line-8)">
+</text><text class="terminal-1051177552-r1" x="0" y="239.6" textLength="195.2" clip-path="url(#terminal-1051177552-line-9)">&#160;&#160;Query&#160;&#160;&#160;&#160;&#160;&#160;&#160;:&#160;</text><text class="terminal-1051177552-r8" x="195.2" y="239.6" textLength="146.4" clip-path="url(#terminal-1051177552-line-9)">Why&#160;is&#160;Pump-</text><text class="terminal-1051177552-r9" x="341.6" y="239.6" textLength="24.4" clip-path="url(#terminal-1051177552-line-9)">14</text><text class="terminal-1051177552-r8" x="366" y="239.6" textLength="134.2" clip-path="url(#terminal-1051177552-line-9)">&#160;vibrating?</text><text class="terminal-1051177552-r1" x="1098" y="239.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-9)">
+</text><text class="terminal-1051177552-r1" x="0" y="264" textLength="195.2" clip-path="url(#terminal-1051177552-line-10)">&#160;&#160;Confidence&#160;&#160;:&#160;</text><text class="terminal-1051177552-r10" x="195.2" y="264" textLength="24.4" clip-path="url(#terminal-1051177552-line-10)">81</text><text class="terminal-1051177552-r10" x="219.6" y="264" textLength="12.2" clip-path="url(#terminal-1051177552-line-10)">%</text><text class="terminal-1051177552-r1" x="1098" y="264" textLength="12.2" clip-path="url(#terminal-1051177552-line-10)">
+</text><text class="terminal-1051177552-r1" x="0" y="288.4" textLength="963.8" clip-path="url(#terminal-1051177552-line-11)">&#160;&#160;Sources&#160;&#160;&#160;&#160;&#160;:&#160;Neo4j&#160;KG,&#160;bearing_wear.txt,&#160;vibration_diagnostics_general.txt,&#160;</text><text class="terminal-1051177552-r1" x="1098" y="288.4" textLength="12.2" clip-path="url(#terminal-1051177552-line-11)">
+</text><text class="terminal-1051177552-r1" x="0" y="312.8" textLength="195.2" clip-path="url(#terminal-1051177552-line-12)">misalignment.txt</text><text class="terminal-1051177552-r1" x="1098" y="312.8" textLength="12.2" clip-path="url(#terminal-1051177552-line-12)">
+</text><text class="terminal-1051177552-r1" x="1098" y="337.2" textLength="12.2" clip-path="url(#terminal-1051177552-line-13)">
+</text><text class="terminal-1051177552-r11" x="24.4" y="361.6" textLength="122" clip-path="url(#terminal-1051177552-line-14)">DIAGNOSIS:</text><text class="terminal-1051177552-r1" x="1098" y="361.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-14)">
+</text><text class="terminal-1051177552-r12" x="24.4" y="386" textLength="146.4" clip-path="url(#terminal-1051177552-line-15)">Bearing&#160;Wear</text><text class="terminal-1051177552-r1" x="170.8" y="386" textLength="475.8" clip-path="url(#terminal-1051177552-line-15)">&#160;in&#160;Bearing-P14-DE&#160;is&#160;causing&#160;excessive</text><text class="terminal-1051177552-r1" x="1098" y="386" textLength="12.2" clip-path="url(#terminal-1051177552-line-15)">
+</text><text class="terminal-1051177552-r1" x="0" y="410.4" textLength="500.2" clip-path="url(#terminal-1051177552-line-16)">&#160;&#160;vibration,&#160;high&#160;temperature,&#160;and&#160;noise.</text><text class="terminal-1051177552-r1" x="1098" y="410.4" textLength="12.2" clip-path="url(#terminal-1051177552-line-16)">
+</text><text class="terminal-1051177552-r1" x="1098" y="434.8" textLength="12.2" clip-path="url(#terminal-1051177552-line-17)">
+</text><text class="terminal-1051177552-r11" x="24.4" y="459.2" textLength="231.8" clip-path="url(#terminal-1051177552-line-18)">RECOMMENDED&#160;ACTION:</text><text class="terminal-1051177552-r1" x="1098" y="459.2" textLength="12.2" clip-path="url(#terminal-1051177552-line-18)">
+</text><text class="terminal-1051177552-r1" x="0" y="483.6" textLength="146.4" clip-path="url(#terminal-1051177552-line-19)">&#160;&#160;Perform&#160;a&#160;</text><text class="terminal-1051177552-r11" x="146.4" y="483.6" textLength="231.8" clip-path="url(#terminal-1051177552-line-19)">Bearing&#160;Replacement</text><text class="terminal-1051177552-r1" x="378.2" y="483.6" textLength="109.8" clip-path="url(#terminal-1051177552-line-19)">&#160;on&#160;Pump-</text><text class="terminal-1051177552-r2" x="488" y="483.6" textLength="24.4" clip-path="url(#terminal-1051177552-line-19)">14</text><text class="terminal-1051177552-r1" x="1098" y="483.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-19)">
+</text><text class="terminal-1051177552-r11" x="24.4" y="508" textLength="12.2" clip-path="url(#terminal-1051177552-line-20)">(</text><text class="terminal-1051177552-r1" x="36.6" y="508" textLength="366" clip-path="url(#terminal-1051177552-line-20)">estimated&#160;4h,&#160;Technician&#160;level</text><text class="terminal-1051177552-r11" x="402.6" y="508" textLength="12.2" clip-path="url(#terminal-1051177552-line-20)">)</text><text class="terminal-1051177552-r1" x="414.8" y="508" textLength="12.2" clip-path="url(#terminal-1051177552-line-20)">.</text><text class="terminal-1051177552-r1" x="1098" y="508" textLength="12.2" clip-path="url(#terminal-1051177552-line-20)">
+</text><text class="terminal-1051177552-r1" x="1098" y="532.4" textLength="12.2" clip-path="url(#terminal-1051177552-line-21)">
+</text><text class="terminal-1051177552-r11" x="24.4" y="556.8" textLength="122" clip-path="url(#terminal-1051177552-line-22)">REASONING:</text><text class="terminal-1051177552-r1" x="1098" y="556.8" textLength="12.2" clip-path="url(#terminal-1051177552-line-22)">
+</text><text class="terminal-1051177552-r13" x="24.4" y="581.2" textLength="36.6" clip-path="url(#terminal-1051177552-line-23)">LLM</text><text class="terminal-1051177552-r1" x="61" y="581.2" textLength="12.2" clip-path="url(#terminal-1051177552-line-23)">=</text><text class="terminal-1051177552-r14" x="73.2" y="581.2" textLength="73.2" clip-path="url(#terminal-1051177552-line-23)">ollama</text><text class="terminal-1051177552-r1" x="146.4" y="581.2" textLength="353.8" clip-path="url(#terminal-1051177552-line-23)">/mistral:latest.&#160;KG&#160;returned&#160;</text><text class="terminal-1051177552-r2" x="500.2" y="581.2" textLength="12.2" clip-path="url(#terminal-1051177552-line-23)">2</text><text class="terminal-1051177552-r1" x="512.4" y="581.2" textLength="219.6" clip-path="url(#terminal-1051177552-line-23)">&#160;fact&#160;rows&#160;across&#160;</text><text class="terminal-1051177552-r2" x="732" y="581.2" textLength="12.2" clip-path="url(#terminal-1051177552-line-23)">2</text><text class="terminal-1051177552-r1" x="744.2" y="581.2" textLength="244" clip-path="url(#terminal-1051177552-line-23)">&#160;unique&#160;fault&#160;types.</text><text class="terminal-1051177552-r1" x="1098" y="581.2" textLength="12.2" clip-path="url(#terminal-1051177552-line-23)">
+</text><text class="terminal-1051177552-r1" x="0" y="605.6" textLength="195.2" clip-path="url(#terminal-1051177552-line-24)">&#160;&#160;RAG&#160;retrieved&#160;</text><text class="terminal-1051177552-r2" x="195.2" y="605.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-24)">3</text><text class="terminal-1051177552-r1" x="207.4" y="605.6" textLength="183" clip-path="url(#terminal-1051177552-line-24)">&#160;manual&#160;chunks.</text><text class="terminal-1051177552-r1" x="1098" y="605.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-24)">
+</text><text class="terminal-1051177552-r1" x="0" y="630" textLength="183" clip-path="url(#terminal-1051177552-line-25)">&#160;&#160;RAG&#160;context:&#160;</text><text class="terminal-1051177552-r1" x="183" y="630" textLength="475.8" clip-path="url(#terminal-1051177552-line-25)">&#160;TITLE:&#160;Centrifugal&#160;Pump&#160;Bearing&#160;Wear&#160;|</text><text class="terminal-1051177552-r1" x="1098" y="630" textLength="12.2" clip-path="url(#terminal-1051177552-line-25)">
+</text><text class="terminal-1051177552-r1" x="183" y="654.4" textLength="451.4" clip-path="url(#terminal-1051177552-line-26)">&#160;TITLE:&#160;General&#160;Vibration&#160;Diagnostics</text><text class="terminal-1051177552-r1" x="1098" y="654.4" textLength="12.2" clip-path="url(#terminal-1051177552-line-26)">
+</text><text class="terminal-1051177552-r6" x="0" y="678.8" textLength="732" clip-path="url(#terminal-1051177552-line-27)">════════════════════════════════════════════════════════════</text><text class="terminal-1051177552-r1" x="1098" y="678.8" textLength="12.2" clip-path="url(#terminal-1051177552-line-27)">
+</text><text class="terminal-1051177552-r1" x="1098" y="703.2" textLength="12.2" clip-path="url(#terminal-1051177552-line-28)">
+</text><text class="terminal-1051177552-r11" x="24.4" y="727.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-29)">[</text><text class="terminal-1051177552-r1" x="36.6" y="727.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-29)">A</text><text class="terminal-1051177552-r11" x="48.8" y="727.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-29)">]</text><text class="terminal-1051177552-r1" x="61" y="727.6" textLength="97.6" clip-path="url(#terminal-1051177552-line-29)">pprove&#160;&#160;</text><text class="terminal-1051177552-r11" x="158.6" y="727.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-29)">[</text><text class="terminal-1051177552-r1" x="170.8" y="727.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-29)">R</text><text class="terminal-1051177552-r11" x="183" y="727.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-29)">]</text><text class="terminal-1051177552-r1" x="195.2" y="727.6" textLength="85.4" clip-path="url(#terminal-1051177552-line-29)">eject&#160;&#160;</text><text class="terminal-1051177552-r11" x="280.6" y="727.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-29)">[</text><text class="terminal-1051177552-r1" x="292.8" y="727.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-29)">E</text><text class="terminal-1051177552-r11" x="305" y="727.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-29)">]</text><text class="terminal-1051177552-r1" x="317.2" y="727.6" textLength="85.4" clip-path="url(#terminal-1051177552-line-29)">dit&#160;&#160;&gt;&#160;</text><text class="terminal-1051177552-r10" x="402.6" y="727.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-29)">A</text><text class="terminal-1051177552-r1" x="1098" y="727.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-29)">
+</text><text class="terminal-1051177552-r1" x="1098" y="752" textLength="12.2" clip-path="url(#terminal-1051177552-line-30)">
+</text><text class="terminal-1051177552-r6" x="0" y="776.4" textLength="732" clip-path="url(#terminal-1051177552-line-31)">════════════════════════════════════════════════════════════</text><text class="terminal-1051177552-r1" x="1098" y="776.4" textLength="12.2" clip-path="url(#terminal-1051177552-line-31)">
+</text><text class="terminal-1051177552-r10" x="0" y="800.8" textLength="183" clip-path="url(#terminal-1051177552-line-32)">&#160;&#160;FINAL&#160;OUTPUT&#160;</text><text class="terminal-1051177552-r10" x="183" y="800.8" textLength="12.2" clip-path="url(#terminal-1051177552-line-32)">(</text><text class="terminal-1051177552-r10" x="195.2" y="800.8" textLength="170.8" clip-path="url(#terminal-1051177552-line-32)">human-approved</text><text class="terminal-1051177552-r10" x="366" y="800.8" textLength="12.2" clip-path="url(#terminal-1051177552-line-32)">)</text><text class="terminal-1051177552-r1" x="1098" y="800.8" textLength="12.2" clip-path="url(#terminal-1051177552-line-32)">
+</text><text class="terminal-1051177552-r6" x="0" y="825.2" textLength="732" clip-path="url(#terminal-1051177552-line-33)">════════════════════════════════════════════════════════════</text><text class="terminal-1051177552-r1" x="1098" y="825.2" textLength="12.2" clip-path="url(#terminal-1051177552-line-33)">
+</text><text class="terminal-1051177552-r1" x="1098" y="849.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-34)">
+</text><text class="terminal-1051177552-r11" x="24.4" y="874" textLength="122" clip-path="url(#terminal-1051177552-line-35)">DIAGNOSIS:</text><text class="terminal-1051177552-r1" x="1098" y="874" textLength="12.2" clip-path="url(#terminal-1051177552-line-35)">
+</text><text class="terminal-1051177552-r12" x="24.4" y="898.4" textLength="146.4" clip-path="url(#terminal-1051177552-line-36)">Bearing&#160;Wear</text><text class="terminal-1051177552-r1" x="170.8" y="898.4" textLength="475.8" clip-path="url(#terminal-1051177552-line-36)">&#160;in&#160;Bearing-P14-DE&#160;is&#160;causing&#160;excessive</text><text class="terminal-1051177552-r1" x="1098" y="898.4" textLength="12.2" clip-path="url(#terminal-1051177552-line-36)">
+</text><text class="terminal-1051177552-r1" x="0" y="922.8" textLength="500.2" clip-path="url(#terminal-1051177552-line-37)">&#160;&#160;vibration,&#160;high&#160;temperature,&#160;and&#160;noise.</text><text class="terminal-1051177552-r1" x="1098" y="922.8" textLength="12.2" clip-path="url(#terminal-1051177552-line-37)">
+</text><text class="terminal-1051177552-r1" x="1098" y="947.2" textLength="12.2" clip-path="url(#terminal-1051177552-line-38)">
+</text><text class="terminal-1051177552-r11" x="24.4" y="971.6" textLength="231.8" clip-path="url(#terminal-1051177552-line-39)">RECOMMENDED&#160;ACTION:</text><text class="terminal-1051177552-r1" x="1098" y="971.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-39)">
+</text><text class="terminal-1051177552-r1" x="0" y="996" textLength="146.4" clip-path="url(#terminal-1051177552-line-40)">&#160;&#160;Perform&#160;a&#160;</text><text class="terminal-1051177552-r11" x="146.4" y="996" textLength="231.8" clip-path="url(#terminal-1051177552-line-40)">Bearing&#160;Replacement</text><text class="terminal-1051177552-r1" x="378.2" y="996" textLength="109.8" clip-path="url(#terminal-1051177552-line-40)">&#160;on&#160;Pump-</text><text class="terminal-1051177552-r2" x="488" y="996" textLength="24.4" clip-path="url(#terminal-1051177552-line-40)">14</text><text class="terminal-1051177552-r1" x="1098" y="996" textLength="12.2" clip-path="url(#terminal-1051177552-line-40)">
+</text><text class="terminal-1051177552-r11" x="24.4" y="1020.4" textLength="12.2" clip-path="url(#terminal-1051177552-line-41)">(</text><text class="terminal-1051177552-r1" x="36.6" y="1020.4" textLength="366" clip-path="url(#terminal-1051177552-line-41)">estimated&#160;4h,&#160;Technician&#160;level</text><text class="terminal-1051177552-r11" x="402.6" y="1020.4" textLength="12.2" clip-path="url(#terminal-1051177552-line-41)">)</text><text class="terminal-1051177552-r1" x="414.8" y="1020.4" textLength="12.2" clip-path="url(#terminal-1051177552-line-41)">.</text><text class="terminal-1051177552-r1" x="1098" y="1020.4" textLength="12.2" clip-path="url(#terminal-1051177552-line-41)">
+</text><text class="terminal-1051177552-r1" x="1098" y="1044.8" textLength="12.2" clip-path="url(#terminal-1051177552-line-42)">
+</text><text class="terminal-1051177552-r1" x="0" y="1069.2" textLength="195.2" clip-path="url(#terminal-1051177552-line-43)">&#160;&#160;Confidence&#160;&#160;:&#160;</text><text class="terminal-1051177552-r10" x="195.2" y="1069.2" textLength="24.4" clip-path="url(#terminal-1051177552-line-43)">81</text><text class="terminal-1051177552-r10" x="219.6" y="1069.2" textLength="12.2" clip-path="url(#terminal-1051177552-line-43)">%</text><text class="terminal-1051177552-r1" x="1098" y="1069.2" textLength="12.2" clip-path="url(#terminal-1051177552-line-43)">
+</text><text class="terminal-1051177552-r1" x="0" y="1093.6" textLength="963.8" clip-path="url(#terminal-1051177552-line-44)">&#160;&#160;Sources&#160;&#160;&#160;&#160;&#160;:&#160;Neo4j&#160;KG,&#160;bearing_wear.txt,&#160;vibration_diagnostics_general.txt,&#160;</text><text class="terminal-1051177552-r1" x="1098" y="1093.6" textLength="12.2" clip-path="url(#terminal-1051177552-line-44)">
+</text><text class="terminal-1051177552-r1" x="0" y="1118" textLength="195.2" clip-path="url(#terminal-1051177552-line-45)">misalignment.txt</text><text class="terminal-1051177552-r1" x="1098" y="1118" textLength="12.2" clip-path="url(#terminal-1051177552-line-45)">
+</text><text class="terminal-1051177552-r1" x="1098" y="1142.4" textLength="12.2" clip-path="url(#terminal-1051177552-line-46)">
+</text><text class="terminal-1051177552-r1" x="0" y="1166.8" textLength="195.2" clip-path="url(#terminal-1051177552-line-47)">&#160;&#160;Audit&#160;log&#160;&#160;&#160;:&#160;</text><text class="terminal-1051177552-r15" x="195.2" y="1166.8" textLength="427" clip-path="url(#terminal-1051177552-line-47)">/Users/you/governed-agentic-kg-rag/</text><text class="terminal-1051177552-r16" x="622.2" y="1166.8" textLength="183" clip-path="url(#terminal-1051177552-line-47)">audit_log.jsonl</text><text class="terminal-1051177552-r1" x="1098" y="1166.8" textLength="12.2" clip-path="url(#terminal-1051177552-line-47)">
+</text><text class="terminal-1051177552-r6" x="0" y="1191.2" textLength="732" clip-path="url(#terminal-1051177552-line-48)">════════════════════════════════════════════════════════════</text><text class="terminal-1051177552-r1" x="1098" y="1191.2" textLength="12.2" clip-path="url(#terminal-1051177552-line-48)">
 </text>
     </g>
     </g>

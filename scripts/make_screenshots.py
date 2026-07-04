@@ -86,21 +86,20 @@ def make_pipeline_screenshot():
     c.print("  CANDIDATE RECOMMENDATION — PENDING HUMAN APPROVAL", style="bold yellow")
     c.print("═" * 60, style="bright_blue")
     c.print("  Query       : [italic]Why is Pump-14 vibrating?[/italic]")
-    c.print("  Confidence  : [green bold]71%[/green bold]")
-    c.print("  Sources     : Neo4j KG, bearing_wear.txt, vibration_diagnostics_general.txt")
+    c.print("  Confidence  : [green bold]81%[/green bold]")
+    c.print("  Sources     : Neo4j KG, bearing_wear.txt, vibration_diagnostics_general.txt, misalignment.txt")
     c.print()
     c.print("  [bold]DIAGNOSIS:[/bold]")
-    c.print("  The most likely fault on Pump-14 is [bold red]Bearing Wear[/bold red] (severity: HIGH).")
-    c.print("  Affected component(s): Bearing-P14-DE.")
-    c.print("  Typical symptoms: noise; high temperature; excessive vibration.")
+    c.print("  [bold red]Bearing Wear[/bold red] in Bearing-P14-DE is causing excessive")
+    c.print("  vibration, high temperature, and noise.")
     c.print()
     c.print("  [bold]RECOMMENDED ACTION:[/bold]")
-    c.print("  Recommended procedure: [bold]Bearing Replacement[/bold].")
-    c.print("  Estimated time: 4h.  Required skill: Technician.")
+    c.print("  Perform a [bold]Bearing Replacement[/bold] on Pump-14")
+    c.print("  (estimated 4h, Technician level).")
     c.print()
     c.print("  [bold]REASONING:[/bold]")
-    c.print("  KG returned 4 fact rows across 2 unique fault types.")
-    c.print("  RAG retrieved 4 manual chunks.")
+    c.print("  LLM=ollama/mistral:latest. KG returned 2 fact rows across 2 unique fault types.")
+    c.print("  RAG retrieved 3 manual chunks.")
     c.print("  RAG context: [bearing_wear.txt] TITLE: Centrifugal Pump Bearing Wear |")
     c.print("               [vibration_diagnostics_general.txt] TITLE: General Vibration Diagnostics")
     c.print("═" * 60, style="bright_blue")
@@ -113,16 +112,15 @@ def make_pipeline_screenshot():
     c.print("═" * 60, style="bright_blue")
     c.print()
     c.print("  [bold]DIAGNOSIS:[/bold]")
-    c.print("  The most likely fault on Pump-14 is [bold red]Bearing Wear[/bold red] (severity: HIGH).")
-    c.print("  Affected component(s): Bearing-P14-DE.")
-    c.print("  Typical symptoms: noise; high temperature; excessive vibration.")
+    c.print("  [bold red]Bearing Wear[/bold red] in Bearing-P14-DE is causing excessive")
+    c.print("  vibration, high temperature, and noise.")
     c.print()
     c.print("  [bold]RECOMMENDED ACTION:[/bold]")
-    c.print("  Recommended procedure: [bold]Bearing Replacement[/bold].")
-    c.print("  Estimated time: 4h.  Required skill: Technician.")
+    c.print("  Perform a [bold]Bearing Replacement[/bold] on Pump-14")
+    c.print("  (estimated 4h, Technician level).")
     c.print()
-    c.print("  Confidence  : [green bold]71%[/green bold]")
-    c.print("  Sources     : Neo4j KG, cavitation.txt, vibration_diagnostics_general.txt, bearing_wear.txt")
+    c.print("  Confidence  : [green bold]81%[/green bold]")
+    c.print("  Sources     : Neo4j KG, bearing_wear.txt, vibration_diagnostics_general.txt, misalignment.txt")
     c.print()
     c.print("  Audit log   : [dim]/Users/you/governed-agentic-kg-rag/audit_log.jsonl[/dim]")
     c.print("═" * 60, style="bright_blue")
@@ -133,22 +131,13 @@ def make_pipeline_screenshot():
 # ── Screenshot 3: audit log tail ───────────────────────────────────────────
 
 def make_audit_log_screenshot():
-    from dotenv import load_dotenv
-    load_dotenv()
-
-    from src.governance.audit_log import LOG_PATH
-    sample_records = []
-    try:
-        with open(LOG_PATH) as f:
-            lines = f.readlines()
-        records = [json.loads(l) for l in lines[-4:] if l.strip()]
-    except Exception:
-        records = []
-
+    # Always use the canonical example records so the screenshot is stable
+    # and shows the Mistral LLM call in tool_calls.
+    records = []
     if not records:
         records = [
             {
-                "timestamp": "2026-07-03T09:14:21.233Z",
+                "timestamp": "2026-07-04T09:14:21.233Z",
                 "session_id": "c3a1f8d0-91b2-4e3f-a7c1-d8e2f5a09b1e",
                 "agent": "planner",
                 "input_data": {"query": "Why is Pump-14 vibrating?"},
@@ -159,7 +148,7 @@ def make_audit_log_screenshot():
                 "notes": "Rule-based decomposition; no LLM call."
             },
             {
-                "timestamp": "2026-07-03T09:14:21.891Z",
+                "timestamp": "2026-07-04T09:14:21.891Z",
                 "session_id": "c3a1f8d0-91b2-4e3f-a7c1-d8e2f5a09b1e",
                 "agent": "kg_agent",
                 "input_data": {"sub_tasks": [{"target": "kg", "equipment_name": "Pump-14", "fault_hint": "vibration"}]},
@@ -167,24 +156,24 @@ def make_audit_log_screenshot():
                 "tool_calls": ["neo4j.run_cypher"],
                 "sources": ["Neo4j KG"],
                 "confidence": 0.85,
-                "notes": "fallback_used=False; 4 results"
+                "notes": "fallback_used=False; 2 results"
             },
             {
-                "timestamp": "2026-07-03T09:14:22.341Z",
+                "timestamp": "2026-07-04T09:14:22.341Z",
                 "session_id": "c3a1f8d0-91b2-4e3f-a7c1-d8e2f5a09b1e",
                 "agent": "synthesis_agent",
-                "input_data": {"kg_fault_count": 2, "rag_chunk_count": 4},
-                "output_data": {"diagnosis": "The most likely fault on Pump-14 is Bearing Wear (severity: HIGH).", "confidence": 0.714, "recommended_action": "Recommended procedure: Bearing Replacement. Estimated time: 4h."},
-                "tool_calls": [],
-                "sources": ["Neo4j KG", "bearing_wear.txt", "vibration_diagnostics_general.txt"],
-                "confidence": 0.714,
-                "notes": "top_fault=Bearing Wear"
+                "input_data": {"kg_fault_count": 2, "rag_chunk_count": 3, "llm_used": True},
+                "output_data": {"diagnosis": "Bearing Wear in Bearing-P14-DE is causing excessive vibration, high temperature, and noise.", "confidence": 0.809, "recommended_action": "Perform a Bearing Replacement on Pump-14 (estimated 4h, Technician level)."},
+                "tool_calls": ["llm.invoke(ollama/mistral:latest)"],
+                "sources": ["Neo4j KG", "bearing_wear.txt", "vibration_diagnostics_general.txt", "misalignment.txt"],
+                "confidence": 0.809,
+                "notes": "top_fault=Bearing Wear; llm_used=True"
             },
             {
-                "timestamp": "2026-07-03T09:14:25.012Z",
+                "timestamp": "2026-07-04T09:14:25.012Z",
                 "session_id": "c3a1f8d0-91b2-4e3f-a7c1-d8e2f5a09b1e",
                 "agent": "human_checkpoint",
-                "input_data": {"candidate_recommendation": "Recommended procedure: Bearing Replacement. Estimated time: 4h."},
+                "input_data": {"candidate_recommendation": "Perform a Bearing Replacement on Pump-14 (estimated 4h, Technician level)."},
                 "output_data": {"decision": "approved", "edited_text": None},
                 "tool_calls": [],
                 "sources": ["human"],
