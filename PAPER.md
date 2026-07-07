@@ -411,4 +411,10 @@ The primary technical contribution is not any single component but their integra
 
 ---
 
+## AI Use Disclosure
+
+The system architecture, research questions, experimental design, governance framework, and all technical decisions described in this paper are the original work of the author. AI assistance (Claude, Anthropic) was used solely for formatting and copy-editing of the written text. No AI tool contributed to the conception of the system, the implementation, the evaluation methodology, or the analytical conclusions.
+
+---
+
 *Source code and reproduction instructions:* https://github.com/VinitaSilaparasetty/governed-agentic-kg-rag
