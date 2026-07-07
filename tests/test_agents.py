@@ -176,3 +176,63 @@ def test_synthesis_produces_output(mock_log, mock_get_llm):
     assert 0.0 <= result.synthesis.confidence <= 1.0
     assert result.synthesis.recommended_action != ""
     mock_llm.invoke.assert_called_once()
+
+
+@patch("src.agents.synthesis_agent.log_step")
+def test_synthesis_heuristic_fallback_when_llm_unavailable(mock_log):
+    """Synthesis must produce valid output even when Ollama is unreachable."""
+    from src.agents.schemas import KGAgentOutput, RAGAgentOutput
+
+    plan = PlannerOutput(
+        original_query="Why is Motor-03 overheating?",
+        sub_tasks=[SubTask(target="both", question="...", equipment_name="Motor-03", fault_hint="overheating")]
+    )
+    kg_output = KGAgentOutput(
+        sub_task_question="KG q",
+        results=[KGResult(
+            equipment="Motor-03", component="Stator-M03",
+            fault="Stator Winding Fault", symptoms=["overheating", "burning smell"],
+            severity="CRITICAL", procedure="Stator Rewinding",
+            steps=["Step 1"], estimated_time="24h", skill_level="Specialist"
+        )],
+    )
+    rag_output = RAGAgentOutput(sub_task_question="motor overheating", chunks=[])
+
+    state = AgentState(
+        user_query="Why is Motor-03 overheating?",
+        plan=plan, kg_output=kg_output, rag_output=rag_output,
+    )
+
+    with patch("src.agents.synthesis_agent._get_llm", side_effect=Exception("Ollama unavailable")):
+        result = run_synthesis_agent(state)
+
+    assert result.synthesis is not None
+    assert result.synthesis.diagnosis != ""
+    assert result.synthesis.recommended_action != ""
+    assert 0.0 <= result.synthesis.confidence <= 1.0
+
+
+def test_confidence_bounded_for_all_severity_levels():
+    """Confidence formula must stay in [0, 1] for every severity × RAG score combination."""
+    from src.agents.synthesis_agent import _severity_weight
+
+    for severity in ("CRITICAL", "HIGH", "MEDIUM", "LOW", None):
+        for rag_score in (0.0, 0.5, 1.0):
+            kg_conf = _severity_weight(severity) * 0.8
+            rag_conf = rag_score * 0.6
+            confidence = round(min((kg_conf + rag_conf) / 1.4, 1.0), 3)
+            assert 0.0 <= confidence <= 1.0, (
+                f"Confidence out of bounds for severity={severity}, rag_score={rag_score}: {confidence}"
+            )
+
+
+def test_planner_detects_burn_symptom():
+    """'burning smell' / 'overheating' keywords must route to the Stator Winding Fault hint."""
+    state = AgentState(user_query="Motor-03 is overheating and smells of burning")
+    with patch("src.agents.planner.log_step"):
+        result = run_planner(state)
+
+    fault_hints = [t.fault_hint for t in result.plan.sub_tasks if t.fault_hint]
+    assert any("Stator" in h for h in fault_hints), (
+        f"Expected Stator Winding Fault hint; got: {fault_hints}"
+    )

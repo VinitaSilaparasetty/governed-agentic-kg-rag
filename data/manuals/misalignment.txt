@@ -1,5 +1,14 @@
 TITLE: Shaft Misalignment in Rotating Machinery — Detection and Laser Alignment
-SOURCE: Industrial Maintenance Manual Rev. 4.2, Section 9.2
+SOURCE: Original authorship by Vinita Silaparasetty; technical content informed by:
+        (1) Wikipedia, "Shaft alignment" — CC BY-SA 4.0
+            https://en.wikipedia.org/wiki/Shaft_alignment
+        (2) ISO 10816-3:2009 — Vibration severity zones for rotating machinery (public summary)
+        (3) ISO 13306:2017 — Maintenance terminology (public standard)
+LICENSE: Creative Commons CC0 1.0 Universal (public domain dedication)
+NOTE: Original text authored by Vinita Silaparasetty. Vibration frequency signatures
+      (1x/2x RPM ratios, axial-to-radial comparison), alignment tolerances (0.05 mm/100 mm),
+      and thermal growth formula (alpha = 12e-6 /°C for steel) reflect standard rotating
+      machinery engineering practice documented in the cited public sources.
 
 SECTION 1: TYPES OF MISALIGNMENT
 Angular misalignment: centrelines intersect at a point — produces dominant 1x and 2x

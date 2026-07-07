@@ -79,17 +79,9 @@ def run_kg_agent(state: AgentState) -> AgentState:
             cyphers_used.append(cypher.strip())
 
             if not rows and sub_task.equipment_name:
-                # fallback: broaden to symptom-only search
-                fallback_cypher = """
-                MATCH (f:FaultType)
-                WHERE any(s IN f.symptoms WHERE toLower(s) CONTAINS 'vibrat')
-                OPTIONAL MATCH (f)-[:RESOLVED_BY]->(p:MaintenanceProcedure)
-                RETURN null AS equipment, null AS component,
-                       f.name AS fault, f.symptoms AS symptoms, f.severity AS severity,
-                       p.name AS procedure, p.steps AS steps,
-                       p.estimated_time AS estimated_time, p.skill_level AS skill_level
-                """
-                rows = client.run_cypher(fallback_cypher)
+                # fallback: broaden to all faults for this equipment, dropping the symptom filter
+                fallback_cypher, fallback_params = _build_cypher(sub_task.equipment_name, None)
+                rows = client.run_cypher(fallback_cypher, fallback_params)
                 cyphers_used.append(fallback_cypher.strip())
                 fallback_used = True
 

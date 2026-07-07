@@ -80,3 +80,6 @@ class AgentState(BaseModel):
     synthesis: SynthesisOutput | None = None
     final: FinalOutput | None = None
     error: str | None = None
+    # Ablation mode: "full" | "kg_only" | "rag_only"
+    # kg_only suppresses RAG chunks in synthesis; rag_only suppresses KG results.
+    mode: Literal["full", "kg_only", "rag_only"] = "full"

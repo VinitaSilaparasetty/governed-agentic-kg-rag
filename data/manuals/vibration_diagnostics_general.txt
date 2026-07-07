@@ -1,5 +1,19 @@
 TITLE: General Vibration Diagnostics for Rotating Industrial Equipment
-SOURCE: Industrial Maintenance Manual Rev. 4.2, Section 6.1
+SOURCE: Original authorship by Vinita Silaparasetty; technical content informed by:
+        (1) ISO 10816-3:2009 — Mechanical vibration: Evaluation of machine vibration
+            by measurements on non-rotating parts. Part 3: Industrial machines with
+            nominal power above 15 kW. Severity zone values are publicly documented
+            in numerous standards summaries and academic textbooks.
+        (2) CWRU Bearing Data Center — bearing defect frequency documentation
+            https://engineering.case.edu/bearingdatacenter (free academic use)
+        (3) Wikipedia, "Vibration" — CC BY-SA 4.0
+            https://en.wikipedia.org/wiki/Vibration
+LICENSE: Creative Commons CC0 1.0 Universal (public domain dedication)
+NOTE: Original text authored by Vinita Silaparasetty. ISO 10816-3 severity zones,
+      bearing defect frequency formulas (BPFO, BPFI, BSF, FTF), and frequency-domain
+      diagnostic patterns are established public domain knowledge in rotating machinery
+      engineering. See data/manuals/cwru_bearing_signatures.txt for the full CWRU
+      bearing dataset reference including computed fault frequency multiples.
 
 SECTION 1: MEASUREMENT GUIDELINES
 Vibration measurements should be taken at each bearing housing location in three axes:

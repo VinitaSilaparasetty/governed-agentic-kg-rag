@@ -93,3 +93,33 @@ def run_pipeline(user_query: str) -> AgentState:
     initial = AgentState(user_query=user_query)
     final_state = app.invoke(initial)
     return AgentState(**final_state)
+
+
+def run_pipeline_mode(user_query: str, mode: str = "full") -> AgentState:
+    """Run the pipeline without the HITL checkpoint, for ablation comparisons.
+
+    mode: "full" | "kg_only" | "rag_only"
+      kg_only  — RAG chunks are suppressed before synthesis
+      rag_only — KG results are suppressed before synthesis
+    """
+    graph = StateGraph(AgentState)
+    graph.add_node("planner", run_planner)
+    graph.add_node("kg_agent", run_kg_agent)
+    graph.add_node("rag_agent", run_rag_agent)
+    graph.add_node("synthesis", run_synthesis_agent)
+    graph.add_node("error_handler", _error_handler)
+
+    graph.set_entry_point("planner")
+    graph.add_conditional_edges("planner", _route_after_planner,
+                                {"kg_agent": "kg_agent", "error_handler": "error_handler"})
+    graph.add_conditional_edges("kg_agent", _route_after_kg,
+                                {"rag_agent": "rag_agent", "error_handler": "error_handler"})
+    graph.add_conditional_edges("rag_agent", _route_after_rag,
+                                {"synthesis": "synthesis", "error_handler": "error_handler"})
+    graph.add_edge("synthesis", END)
+    graph.add_edge("error_handler", END)
+
+    app = graph.compile()
+    initial = AgentState(user_query=user_query, mode=mode)
+    final_state = app.invoke(initial)
+    return AgentState(**final_state)
