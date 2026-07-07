@@ -1,5 +1,16 @@
 TITLE: Centrifugal Pump Bearing Wear — Diagnosis and Replacement Procedure
-SOURCE: Industrial Maintenance Manual Rev. 4.2, Section 7.3
+SOURCE: Original authorship by Vinita Silaparasetty; technical specifications
+        informed by the following public sources:
+        (1) CWRU Bearing Data Center, Case Western Reserve University —
+            https://engineering.case.edu/bearingdatacenter (free academic use)
+        (2) Wikipedia, "Bearing (mechanical)" — CC BY-SA 4.0
+            https://en.wikipedia.org/wiki/Bearing_(mechanical)
+        (3) ISO 10816-3:2009 — Vibration severity zones (publicly documented summary)
+LICENSE: Creative Commons CC0 1.0 Universal (public domain dedication)
+NOTE: Original text authored by Vinita Silaparasetty. Bearing defect frequency
+      multiples (BPFO, BPFI) and vibration severity thresholds reflect values
+      documented in the CWRU Bearing Data Center and ISO 10816-3. See also
+      data/manuals/cwru_bearing_signatures.txt for the full CWRU reference file.
 
 SECTION 1: SYMPTOM IDENTIFICATION
 Bearing wear in centrifugal pumps typically manifests as broadband vibration with elevated

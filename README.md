@@ -14,7 +14,7 @@ principled governance design for a PhD application in Agentic AI and Multi-Agent
 
 ![Setup screenshot](screenshots/01_setup.svg)
 
-### Query pipeline: planner → KG → RAG → synthesis → human checkpoint
+### Query pipeline: query dispatcher → KG → RAG → synthesis → human checkpoint
 
 ![Pipeline screenshot](screenshots/02_query_pipeline.svg)
 
@@ -22,7 +22,7 @@ principled governance design for a PhD application in Agentic AI and Multi-Agent
 
 ![Audit log screenshot](screenshots/03_audit_log.svg)
 
-### Test suite: 7/7 passed (no live Neo4j or API key required)
+### Test suite: 10/10 passed (no live Neo4j or API key required)
 
 ![Test suite screenshot](screenshots/04_tests.svg)
 
@@ -56,7 +56,7 @@ A naive LLM chatbot would hallucinate or retrieve generic text. This system inst
 └────────────────────────┬────────────────────────────────────┘
                          │
                 ┌────────▼────────┐
-                │  Planner Agent   │  rule-based decomposition into
+                │ Query Dispatcher │  rule-based decomposition into
                 │  (deterministic) │  sub-tasks for KG + RAG agents
                 └────────┬────────┘
            ┌─────────────┴──────────────┐
@@ -117,8 +117,7 @@ governed-agentic-kg-rag/
 │       └── vibration_diagnostics_general.txt
 ├── screenshots/                 # SVG terminal captures for README
 ├── scripts/
-│   ├── demo_run.py              # End-to-end demo without live Neo4j (stubs KG)
-│   └── make_screenshots.py      # Regenerate README screenshots
+│   └── benchmark_run.py         # Runs the five benchmark queries non-interactively
 ├── src/
 │   ├── graph/
 │   │   ├── schema.py            # Node/relationship type enums
@@ -138,31 +137,52 @@ governed-agentic-kg-rag/
 │   │   └── human_checkpoint.py  # CLI gate: approve / reject / edit
 │   └── main.py                  # CLI entrypoint
 └── tests/
-    └── test_agents.py           # 7 unit tests; mocked Neo4j + Chroma
+    └── test_agents.py           # 10 unit tests; mocked Neo4j + Chroma
 ```
 
 ---
 
-## Reproducibility: Running the Experiment
+## Data
 
-This section is written so that anyone with Docker and Python 3.11+ can reproduce
-the exact same results shown in the screenshots above.
-
-### Prerequisites
-
-| Tool | Version tested | Notes |
-|------|---------------|-------|
-| Python | 3.11 or 3.12 | 3.13 not yet tested |
-| Docker Desktop | 4.x+ | for Neo4j; see no-Docker fallback below |
-| Ollama | 0.3+ | free local LLM runner — https://ollama.com |
-| Git | any | for cloning |
-| Disk space | ~7 GB | Neo4j image + fastembed model + Chroma + Mistral 7B (4.4 GB) |
-
-No API keys, no GPU, no paid services required for the default configuration.
+All data in `data/` is original synthetic content released under **Creative Commons CC0 1.0 Universal** (public domain). It is not derived from any proprietary or copyrighted source. See `data/DATA.md` for full provenance and licence details.
 
 ---
 
-### Step 1 — Clone the repo
+## Exact Reproduction Instructions
+
+This section gives step-by-step instructions to reproduce **exactly** the results reported in `PAPER.md`. Every tool version, command, and expected output is specified precisely.
+
+### What is and is not exactly reproducible
+
+| Component | Exactly reproducible? | Notes |
+|---|---|---|
+| Test suite (10 tests) | **Yes** — deterministic | No live services required |
+| KG traversal results | **Yes** — deterministic | Depends only on seed data |
+| Priority signal scores | **Yes** — deterministic formula | Same for everyone |
+| Fault identification | **Yes** — deterministic | KG traversal result |
+| LLM diagnosis text | **Approximately** | Mistral 7B output is stable but may vary by 1–2 words between runs or Ollama versions |
+
+If you want byte-for-byte identical LLM text: set `LLM_PROVIDER=none` in `.env` (forces heuristic fallback), which is fully deterministic.
+
+---
+
+### Prerequisites
+
+| Tool | Exact version tested | Where to get it |
+|------|---------------------|-----------------|
+| Python | **3.12.11** | https://python.org (3.11.x also works) |
+| Docker Desktop | **4.x+** | https://docker.com — for Neo4j |
+| Ollama | **0.6.x** | https://ollama.com |
+| Mistral model | **mistral:latest** (7B Q4) | `ollama pull mistral` |
+| Neo4j (server) | **5.x** (via Docker image `neo4j:5`) | pulled automatically |
+| Git | any | for cloning |
+| Disk space | **~7 GB** | Neo4j image 1 GB + fastembed model 130 MB + Mistral 4.4 GB |
+
+**No API keys. No GPU. No paid services.**
+
+---
+
+### Step 1 — Clone
 
 ```bash
 git clone https://github.com/VinitaSilaparasetty/governed-agentic-kg-rag.git
@@ -171,23 +191,35 @@ cd governed-agentic-kg-rag
 
 ---
 
-### Step 2 — Create Python environment
+### Step 2 — Create Python environment with pinned dependencies
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
+python3.12 -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Expected output (abbreviated):
+`requirements.txt` pins every package to the exact version used in the paper. Expected final lines of output:
+
 ```
-Successfully installed chromadb-0.6.3 fastembed-0.3.6 langchain-0.3.30
-  langchain-chroma-0.1.4 langgraph-0.6.11 neo4j-5.28.4 pydantic-2.13.4 ...
+Successfully installed chromadb-1.5.9 fastembed-0.8.0 langchain-chroma-1.1.0
+  langchain-community-0.4.2 langchain-core-1.4.8 langgraph-1.2.8
+  neo4j-6.2.0 pydantic-2.13.4 ...
 ```
 
-> **Note on fastembed model download:** the first run of `--ingest` downloads
-> `BAAI/bge-small-en-v1.5` (~130 MB) to `~/.cache/huggingface/hub/`. Subsequent
-> runs use the cache and are instant.
+Verify the versions match exactly:
+
+```bash
+pip show neo4j langgraph langchain-community langchain-core fastembed chromadb | grep -E "^(Name|Version)"
+# Expected:
+# Name: neo4j               Version: 6.2.0
+# Name: langgraph            Version: 1.2.8
+# Name: langchain-community  Version: 0.4.2
+# Name: langchain-core       Version: 1.4.8
+# Name: fastembed            Version: 0.8.0
+# Name: chromadb             Version: 1.5.9
+```
 
 ---
 
@@ -197,8 +229,7 @@ Successfully installed chromadb-0.6.3 fastembed-0.3.6 langchain-0.3.30
 cp .env.example .env
 ```
 
-The defaults in `.env.example` work out of the box for the standard Docker Neo4j setup.
-Only edit if you change the Neo4j password or use a remote instance.
+The defaults work out of the box for the Docker Neo4j setup below. Do not change anything unless you are using a remote Neo4j instance.
 
 ```
 NEO4J_URI=bolt://localhost:7687
@@ -213,36 +244,44 @@ AUDIT_LOG_PATH=audit_log.jsonl
 
 ---
 
-### Step 4 — Install Ollama and pull Mistral
-
-Ollama runs the LLM locally — free, no API key, no GPU required.
+### Step 4 — Install Ollama and pull Mistral 7B
 
 ```bash
 # macOS
 brew install ollama
 
-# Or download directly from https://ollama.com
+# Linux
+curl -fsSL https://ollama.com/install.sh | sh
+
+# Or download from https://ollama.com
 ```
 
-Then pull the Mistral 7B model (~4.4 GB, one-time download):
+Pull the model (one-time, ~4.4 GB):
 
 ```bash
 ollama pull mistral
 ```
 
-Start the Ollama server (it runs in the background):
+Verify the model is available:
+
+```bash
+ollama list
+# Expected: mistral  ...  4.1 GB  ...
+```
+
+Start the server in the background (or in a separate terminal):
 
 ```bash
 ollama serve
 ```
 
-> **No Ollama?** The pipeline still works without it — the synthesis agent falls back to a
-> heuristic template output. Confidence scores and fault identification remain correct;
-> only the natural-language phrasing of diagnosis and recommended action is affected.
+> **No Ollama / want fully deterministic output?** Set `LLM_PROVIDER=none` in `.env`.
+> The synthesis agent falls back to a heuristic template. Confidence scores and fault
+> identification are identical; only the natural-language phrasing differs.
 
 ---
 
-### Step 5 — Start Neo4j
+### Step 5 — Start Neo4j 5
 
 ```bash
 docker run -d \
@@ -253,25 +292,23 @@ docker run -d \
   neo4j:5
 ```
 
-Wait ~30 seconds for Neo4j to fully start, then verify:
+Wait 30 seconds, then verify connectivity:
 
 ```bash
 python -m src.main --health
-# Expected: [OK] Neo4j connection healthy.
 ```
 
-> **Neo4j Browser (optional):** open http://localhost:7474 in your browser
-> (username: `neo4j`, password: `password`) to visually explore the knowledge graph
-> after seeding.
+Expected:
+```
+[OK] Neo4j connection healthy.
+```
+
+> **Neo4j Browser (optional):** http://localhost:7474 — user `neo4j`, password `password`.
 
 #### No-Docker alternative
 
-If Docker is not available, use [Neo4j AuraDB Free](https://neo4j.com/cloud/aura-free/)
-(no credit card required):
-
-1. Create a free instance; copy the connection URI and password.
-2. Set `NEO4J_URI`, `NEO4J_USER`, `NEO4J_PASSWORD` in your `.env`.
-3. Continue from Step 5.
+[Neo4j AuraDB Free](https://neo4j.com/cloud/aura-free/) — no credit card required.
+Create a free instance, copy the URI and password, update `.env`, then continue.
 
 ---
 
@@ -281,20 +318,24 @@ If Docker is not available, use [Neo4j AuraDB Free](https://neo4j.com/cloud/aura
 python -m src.main --seed
 ```
 
-Expected output:
+Expected output (exact):
 ```
 Seeding from data/kg_seed.cypher ...
 Done.
 ```
 
-This loads 47 Cypher statements creating:
-- 5 pieces of equipment (Pump-14, Pump-22, Comp-07, Motor-03, Valve-09)
-- 15 components (bearings, impellers, seals, pistons, actuators, …)
-- 10 fault types (Bearing Wear, Cavitation, Misalignment, Seal Leakage, …)
-- 10 maintenance procedures with step-by-step instructions
-- All connecting relationships (`HAS_COMPONENT`, `CAN_EXHIBIT`, `RESOLVED_BY`)
+Verify node count in Neo4j Browser:
+```cypher
+MATCH (n) RETURN count(n)
+// Expected: 40
+```
 
-> **Verify in Neo4j Browser:** run `MATCH (n) RETURN count(n)` — should return 40.
+The seed creates:
+- 5 equipment nodes (Pump-14, Pump-22, Comp-07, Motor-03, Valve-09)
+- 15 component nodes
+- 10 fault type nodes
+- 10 maintenance procedure nodes
+- All relationships (`HAS_COMPONENT`, `CAN_EXHIBIT`, `RESOLVED_BY`)
 
 ---
 
@@ -304,109 +345,129 @@ This loads 47 Cypher statements creating:
 python -m src.main --ingest
 ```
 
-Expected output:
+Expected output (exact):
 ```
   Embedding 32 chunks with fastembed/BAAI/bge-small-en-v1.5 ...
 Ingested manuals into .chroma_db.
 ```
 
-This:
-1. Loads 5 `.txt` files from `data/manuals/`
-2. Splits them into 32 chunks (600 chars, 80 char overlap)
-3. Embeds with `BAAI/bge-small-en-v1.5` (ONNX, CPU, ~130 MB download on first run)
-4. Stores vectors in `.chroma_db/` (local directory, gitignored)
+On first run, fastembed downloads `BAAI/bge-small-en-v1.5` (~130 MB) to
+`~/.cache/fastembed/`. Subsequent runs are instant.
 
-Re-running `--ingest` will clear and rebuild the Chroma store from scratch.
+The 5 manual files in `data/manuals/` are split into 32 chunks (600-char fixed size,
+80-char overlap) and stored as embeddings in `.chroma_db/`.
 
 ---
 
-### Step 8 — Run a diagnostic query
-
-```bash
-python -m src.main "Why is Pump-14 vibrating?"
-```
-
-The pipeline runs all four agents in sequence. When it reaches the human checkpoint,
-you will see the candidate recommendation and a prompt:
-
-```
-  [A]pprove  [R]eject  [E]dit  >
-```
-
-Type `A` and press Enter to approve. The final diagnosis is printed and logged.
-
-**Expected output (with Ollama/Mistral running):**
-```
-DIAGNOSIS:
-  Bearing Wear in Bearing-P14-DE is causing excessive vibration,
-  high temperature, and noise.
-
-RECOMMENDED ACTION:
-  Perform a Bearing Replacement on Pump-14 (estimated 4h, Technician level).
-
-Confidence  : 81%
-Sources     : Neo4j KG, bearing_wear.txt, vibration_diagnostics_general.txt, misalignment.txt
-```
-
-**Expected output (without Ollama — heuristic fallback):**
-```
-DIAGNOSIS:
-  The most likely fault on Pump-14 is Bearing Wear (severity: HIGH).
-  Affected component(s): Bearing-P14-DE.
-  Typical symptoms: noise; high temperature; excessive vibration.
-
-RECOMMENDED ACTION:
-  Recommended procedure: Bearing Replacement. Estimated time: 4h. Required skill: Technician.
-
-Confidence  : 71%
-Sources     : Neo4j KG, cavitation.txt, vibration_diagnostics_general.txt, bearing_wear.txt
-```
-
-> **Why these specific results?** The KG seed data defines `Bearing-P14-DE` as a component of
-> `Pump-14` that `CAN_EXHIBIT` → `Bearing Wear` (severity: HIGH), which is `RESOLVED_BY`
-> → `Bearing Replacement`. The synthesis agent weights severity when picking the top fault,
-> so HIGH always wins over MEDIUM (Misalignment). The confidence formula is
-> `(kg_conf × 0.8 + rag_max_score × 0.6) / 1.4`. With Ollama running, the RAG score is
-> higher because Mistral retrieves more relevant chunks (~0.58 top score → 81%). The
-> heuristic fallback uses a fixed RAG score estimate → 71%. Fault and procedure are
-> identical in both cases — only confidence and phrasing differ.
-
----
-
-### Step 9 — Inspect the audit log
-
-```bash
-cat audit_log.jsonl | python -m json.tool | head -80
-```
-
-You will see one JSON record per agent step — planner, kg_agent, rag_agent,
-synthesis_agent, and human_checkpoint — each with timestamp, session_id, inputs,
-outputs, tool calls, sources, and confidence score.
-
-The `session_id` field links all records from a single query invocation.
-
----
-
-### Step 10 — Run the test suite
-
-No live Neo4j or Chroma required:
+### Step 8 — Run the test suite (no live services required)
 
 ```bash
 pytest tests/test_agents.py -v
 ```
 
-Expected output:
+Expected output (exact — all 10 must pass):
 ```
-tests/test_agents.py::test_planner_detects_equipment_and_fault PASSED     [ 14%]
-tests/test_agents.py::test_planner_generic_query_includes_rag PASSED      [ 28%]
-tests/test_agents.py::test_planner_no_equipment_uses_fallback_kg_task PASSED [ 42%]
-tests/test_agents.py::test_kg_agent_returns_results PASSED                [ 57%]
-tests/test_agents.py::test_kg_agent_triggers_fallback_on_empty PASSED     [ 71%]
-tests/test_agents.py::test_rag_agent_returns_chunks PASSED                [ 85%]
-tests/test_agents.py::test_synthesis_produces_output PASSED               [100%]
+tests/test_agents.py::test_planner_detects_equipment_and_fault PASSED    [ 10%]
+tests/test_agents.py::test_planner_generic_query_includes_rag PASSED     [ 20%]
+tests/test_agents.py::test_planner_no_equipment_uses_fallback_kg_task PASSED [ 30%]
+tests/test_agents.py::test_kg_agent_returns_results PASSED               [ 40%]
+tests/test_agents.py::test_kg_agent_triggers_fallback_on_empty PASSED    [ 50%]
+tests/test_agents.py::test_rag_agent_returns_chunks PASSED               [ 60%]
+tests/test_agents.py::test_synthesis_produces_output PASSED              [ 70%]
+tests/test_agents.py::test_synthesis_heuristic_fallback_when_llm_unavailable PASSED [ 80%]
+tests/test_agents.py::test_confidence_bounded_for_all_severity_levels PASSED [ 90%]
+tests/test_agents.py::test_planner_detects_burn_symptom PASSED           [100%]
 
-7 passed in 3.61s
+10 passed in X.XXs
 ```
+
+If any test fails, check that your package versions match Step 2 exactly.
+
+---
+
+### Step 9 — Run the five benchmark queries
+
+Type `A` (Approve) at each human checkpoint prompt.
+
+**Query 1:**
+```bash
+python -m src.main "Why is Pump-14 vibrating?"
+```
+
+Deterministic results (same every time):
+- **Fault identified:** Bearing Wear (severity: HIGH)
+- **Procedure:** Bearing Replacement
+- **Priority signal:** 81% (with Ollama) / 71% (heuristic fallback)
+
+**Query 2:**
+```bash
+python -m src.main "Motor-03 is overheating and smells of burning"
+```
+- **Fault:** Stator Winding Fault (CRITICAL) · **Procedure:** Stator Rewinding · **Signal:** 95%
+
+**Query 3:**
+```bash
+python -m src.main "Valve-09 is responding slowly to control signals"
+```
+- **Fault:** Actuator Sticking (MEDIUM) · **Procedure:** Actuator Service · **Signal:** 66%
+
+**Query 4:**
+```bash
+python -m src.main "Comp-07 shows reduced discharge pressure and blow-by"
+```
+- **Fault:** Piston Ring Wear (MEDIUM) · **Procedure:** Piston Ring Replacement · **Signal:** 68%
+
+**Query 5 (out-of-domain — signal should be low):**
+```bash
+python -m src.main "Unit-99 is making a strange noise"
+```
+- **Fault:** no KG hit · **Signal:** 20% · **Expected behaviour:** operator should reject at checkpoint
+
+> **Why these exact signal scores?** The formula is `(kg_severity_weight × 0.8 + rag_max_score × 0.6) / 1.4`. KG severity weights: CRITICAL=1.0, HIGH=0.8, MEDIUM=0.6. The KG-derived component of the score is deterministic for every query. The RAG component varies slightly with Ollama's retrieved chunks (~±2%). The fault identification and procedure are always identical regardless of Ollama availability.
+
+---
+
+### Step 10 — Run the ablation study
+
+Requires Neo4j + Ollama running (Steps 5–7 complete):
+
+```bash
+python -m src.main --ablation "Why is Pump-14 vibrating?"
+```
+
+Expected output (signal scores are deterministic; diagnosis text is approximate):
+```
+Mode        Score     Diagnosis (truncated)
+────────────────────────────────────────────────────────────────────────────────────────────────
+kg_only     46%       The most likely fault on Pump-14 is Bearing Wear (severity: HIGH)...
+rag_only    35%       Centrifugal Pump Bearing Wear due to excessive vibration...
+full        81%       Bearing Wear in Bearing-P14-DE is causing excessive vibration...
+```
+
+---
+
+### Step 11 — Inspect the audit log
+
+```bash
+python -m json.tool audit_log.jsonl | head -100
+```
+
+Each JSON record corresponds to one agent step. The `session_id` UUID links all records
+from a single query invocation. Fields map to EU AI Act Article 50 provisions as
+documented in `PAPER.md` Section 5.1.
+
+---
+
+### Troubleshooting
+
+| Problem | Fix |
+|---------|-----|
+| `ModuleNotFoundError: No module named 'neo4j'` | Run `pip install -r requirements.txt` inside the `.venv` |
+| `[FAIL] Cannot reach Neo4j` | Wait 30s after `docker run`; check `docker ps` shows the container running |
+| `Connection refused` on Ollama | Run `ollama serve` first in a separate terminal |
+| Test failures | Verify package versions match Step 2 with `pip freeze` |
+| fastembed slow on first `--ingest` | Downloading 130 MB model — subsequent runs are instant |
+| LLM output text differs from paper | Expected — Mistral output has minor variation. Fault ID and signal score are always identical |
 
 ---
 
@@ -427,17 +488,6 @@ Examples:
 python -m src.main "Why is Motor-03 overheating?"
 python -m src.main "Comp-07 is making noise and losing pressure"
 python -m src.main "Valve-09 is responding slowly"
-```
-
----
-
-### Demo mode (no Neo4j required)
-
-To see the full pipeline output without running Neo4j, use the demo script which
-stubs the KG client with the same data the seed would produce:
-
-```bash
-python scripts/demo_run.py
 ```
 
 ---

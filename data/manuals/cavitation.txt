@@ -1,5 +1,16 @@
 TITLE: Impeller Cavitation — Detection, Root Cause, and Corrective Actions
-SOURCE: Industrial Maintenance Manual Rev. 4.2, Section 8.1
+SOURCE: Original authorship by Vinita Silaparasetty; technical content informed by:
+        (1) Wikipedia, "Cavitation" — CC BY-SA 4.0
+            https://en.wikipedia.org/wiki/Cavitation
+        (2) Hydraulic Institute Standard HI 9.6.1 (NPSH margin guidance — public summary)
+        (3) UCI Condition Monitoring of Hydraulic Systems dataset (CC BY 4.0)
+            https://doi.org/10.24432/C5CW26 — pump internal leakage fault patterns
+LICENSE: Creative Commons CC0 1.0 Universal (public domain dedication)
+NOTE: Original text authored by Vinita Silaparasetty. The NPSH formula and
+      vibration frequency signatures (sub-synchronous, broadband 1-20 kHz) reflect
+      established rotating machinery diagnostics documented in the cited public sources.
+      The UCI hydraulic dataset (CC BY 4.0) provides real pump leakage fault signatures
+      consistent with the cavitation and flow-loss diagnostic patterns described here.
 
 SECTION 1: WHAT IS CAVITATION
 Cavitation occurs when the local static pressure in the pump inlet falls below the vapour

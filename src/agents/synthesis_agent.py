@@ -122,9 +122,10 @@ def _heuristic_synthesis(
 def run_synthesis_agent(state: AgentState) -> AgentState:
     kg_out = state.kg_output
     rag_out = state.rag_output
+    mode = state.mode  # "full" | "kg_only" | "rag_only"
 
-    kg_results = kg_out.results if kg_out else []
-    rag_chunks = rag_out.chunks if rag_out else []
+    kg_results = (kg_out.results if kg_out else []) if mode != "rag_only" else []
+    rag_chunks = (rag_out.chunks if rag_out else []) if mode != "kg_only" else []
 
     # ── Aggregate KG evidence ──────────────────────────────────────────────
     fault_candidates: dict[str, dict] = {}
