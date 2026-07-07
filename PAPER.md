@@ -6,7 +6,7 @@
 Aevoxis Solutions  
 info@aevoxis.de
 
-*July 2026*
+*3 July 2026*
 
 </div>
 
