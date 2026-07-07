@@ -1,3 +1,5 @@
+<div align="center">
+
 # Governed KG-Augmented Multi-Agent RAG for Industrial Fault Diagnosis: Structured Retrieval, LLM Synthesis, and Transparent Human Oversight
 
 **Vinita Silaparasetty**  
@@ -5,6 +7,8 @@ Aevoxis Solutions
 emtech1968@gmail.com
 
 *July 2026*
+
+</div>
 
 ---
 
