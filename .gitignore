@@ -8,3 +8,5 @@ audit_log.jsonl
 dist/
 build/
 .DS_Store
+PAPER.md
+CLAUDE.md
