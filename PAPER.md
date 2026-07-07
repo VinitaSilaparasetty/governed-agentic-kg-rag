@@ -4,7 +4,7 @@
 
 **Vinita Silaparasetty**  
 Aevoxis Solutions  
-emtech1968@gmail.com
+info@aevoxis.de
 
 *July 2026*
 
