@@ -20,7 +20,7 @@ The `data/` directory contains two categories of content:
 - `data/manuals/seal_leakage.txt`
 - `data/manuals/vibration_diagnostics_general.txt`
 
-All SIMD v1.0 files are **original content authored by Vinita Silaparasetty (Aevoxis Solutions)**
+All SIMD v1.0 files are **original content authored by Vinita Silaparasetty**
 and are dedicated to the public domain under the **Creative Commons CC0 1.0 Universal** licence.
 
 ### What SIMD v1.0 is
