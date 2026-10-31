@@ -1,20 +1,22 @@
 """
 Structured append-only audit log — JSON Lines format.
 
-Each record captures sufficient information to satisfy EU AI Act Article 50
-transparency and traceability requirements for agentic AI systems:
+Each record supports the automatic event logging that EU AI Act Article 12 requires
+of high-risk AI systems (see the README's Design Rationale for when this system would be one):
 
-Field            Article 50 mapping
------------      ------------------
-timestamp        Art. 50(1)(a) — record of when processing occurred
-agent            Art. 50(1)(b) — identifies the AI component responsible
-input_data       Art. 50(1)(c) — inputs that triggered the decision/action
-output_data      Art. 50(1)(c) — outputs and intermediate decisions produced
-tool_calls       Art. 50(1)(d) — tools/capabilities invoked (traceability of actions)
-sources          Art. 50(1)(e) — provenance of information used (data lineage)
-confidence       Art. 50(2)    — degree of certainty; enables meaningful human review
-notes            Art. 50(1)(f) — supplementary human-readable context
-session_id       Art. 50(1)(a) — links all steps of a single query to one run
+Field            Purpose (Article 12 logging)
+-----------      ----------------------------
+timestamp        when the event occurred
+session_id       links all steps of a single query to one run
+agent            identifies the AI component responsible
+input_data       inputs that triggered the decision/action
+output_data      outputs and intermediate decisions produced
+tool_calls       tools/capabilities invoked (traceability of actions)
+sources          provenance of information used (data lineage)
+confidence       evidence-strength score shown to the operator (heuristic, not calibrated)
+notes            supplementary human-readable context
+
+Retention (Article 19 / 26(6)) and tamper-evidence are not implemented in this prototype.
 """
 import json
 import os

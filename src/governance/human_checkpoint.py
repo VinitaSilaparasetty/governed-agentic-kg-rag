@@ -3,8 +3,8 @@ Human-in-the-loop CLI checkpoint.
 
 No recommendation is returned to the caller without passing through this gate.
 The operator may approve, reject, or edit the candidate before it is finalised.
-This implements the human oversight requirement described in EU AI Act Article 50(3)
-for high-risk agentic AI systems operating in safety-relevant domains.
+This implements the human oversight that EU AI Act Article 14 requires of high-risk AI
+systems: the operator can disregard, override or reverse the output (Art. 14(4)(d)).
 """
 from .audit_log import log_human_decision
 from ..agents.schemas import AgentState, FinalOutput, SynthesisOutput

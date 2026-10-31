@@ -4,7 +4,7 @@ A working multi-agent agentic AI system for industrial equipment fault diagnosis
 principled governance design for a PhD application in Agentic AI and Multi-Agent Systems.
 
 **Domain:** Industrial maintenance (centrifugal pumps, compressors, motors, valves)  
-**Governance framing:** EU AI Act Article 50 — transparency and traceability for agentic AI
+**Governance framing:** EU AI Act Articles 12–14 — logging, transparency and human oversight for high-risk AI
 
 ---
 
@@ -18,7 +18,7 @@ principled governance design for a PhD application in Agentic AI and Multi-Agent
 
 ![Pipeline screenshot](screenshots/02_query_pipeline.svg)
 
-### Audit log: Article 50 transparency trail (JSON Lines)
+### Audit log: Article 12 event trail (JSON Lines)
 
 ![Audit log screenshot](screenshots/03_audit_log.svg)
 
@@ -43,7 +43,7 @@ A naive LLM chatbot would hallucinate or retrieve generic text. This system inst
 5. **Gates every output** through a human-in-the-loop checkpoint — no recommendation reaches the
    user without operator approval.
 6. **Logs every agent step** to an append-only structured audit log (JSON Lines) with field-level
-   mapping to EU AI Act Article 50 requirements.
+   mapping to EU AI Act Article 12 logging requirements.
 
 ---
 
@@ -88,7 +88,7 @@ A naive LLM chatbot would hallucinate or retrieve generic text. This system inst
                 └────────┬────────┘
                          │
                 ┌────────▼────────┐
-                │  Audit Log       │  ◄── Art. 50 compliance trail
+                │  Audit Log       │  ◄── Art. 12 event log
                 │  (JSON Lines)    │      every step: agent, inputs,
                 │                  │      outputs, tool calls,
                 │                  │      sources, confidence,
@@ -133,7 +133,7 @@ governed-agentic-kg-rag/
 │   │   ├── synthesis_agent.py   # Evidence combination + confidence scoring
 │   │   └── graph_workflow.py    # LangGraph state machine definition
 │   ├── governance/
-│   │   ├── audit_log.py         # Append-only JSON Lines log (Art. 50 annotated)
+│   │   ├── audit_log.py         # Append-only JSON Lines log (Art. 12 annotated)
 │   │   └── human_checkpoint.py  # CLI gate: approve / reject / edit
 │   └── main.py                  # CLI entrypoint
 └── tests/
@@ -453,8 +453,8 @@ python -m json.tool audit_log.jsonl | head -100
 ```
 
 Each JSON record corresponds to one agent step. The `session_id` UUID links all records
-from a single query invocation. Fields map to EU AI Act Article 50 provisions as
-documented in `PAPER.md` Section 5.1.
+from a single query invocation. Fields map to EU AI Act Article 12 as
+documented in the Design Rationale section below.
 
 ---
 
@@ -523,138 +523,125 @@ Full seed data in `data/kg_seed.cypher`.
 
 ---
 
-## Design Rationale: Connecting Governance Choices to EU AI Act Article 50
+## Design Rationale: Connecting Governance Choices to the EU AI Act (Articles 12, 13 and 14)
 
-Article 50 of the EU AI Act imposes transparency and logging obligations on providers of AI systems
-that interact with humans or take actions with real-world consequences. In an industrial maintenance
-context, an incorrect diagnosis recommendation could lead to equipment damage, unplanned downtime,
-or — in safety-critical facilities — personal injury. This makes strong governance a design
-requirement, not an afterthought.
+The governance layer is designed around the EU AI Act's requirements for **high-risk** AI systems
+(Regulation (EU) 2024/1689): automatic logging (**Article 12**), transparency to the people using
+the system (**Article 13**) and human oversight (**Article 14**).
 
-The following explains each architectural decision and the specific Article 50 provision it addresses.
+**Would this system be high-risk?** It depends on its intended purpose, and this repo makes no
+classification claim. An AI system can be high-risk under **Article 6(1)** when it is a safety
+component of a product covered by the EU legislation listed in **Annex I**, which includes machinery,
+and under **Article 6(2)** when it falls in an **Annex III** area, such as safety components in the
+operation of critical infrastructure (water, gas, heating or electricity supply). An incorrect
+maintenance recommendation could lead to equipment damage, unplanned downtime or, in safety-critical
+facilities, personal injury. A diagnostic assistant deployed in that setting is the kind of system
+these rules are written for, so the design treats Articles 12–14 as requirements, not afterthoughts.
+
+**Where Article 50 fits.** Article 50 sets separate transparency duties, mainly telling people they
+are interacting with an AI system (Art. 50(1)) and marking AI-generated content in a machine-readable
+way (Art. 50(2)). Here the operator always sees the recommendation labelled as an AI candidate pending
+approval. Article 50 does not cover logging or human oversight; earlier versions of this README mapped
+those features to Article 50 sub-points, which was incorrect.
+
+The following explains each architectural decision and the provision it supports. The mapping is an
+engineering design aid, not legal advice.
 
 ---
 
-### Art. 50(1)(a) — Record when and how the AI system was used
+### Article 12 — Automatic recording of events (logging)
 
-**Provision:** Providers must ensure that AI systems interacting with natural persons are
-transparent about when and how the AI is being used.
+**Provision:** Article 12(1) requires high-risk AI systems to technically allow the automatic
+recording of events (logs) over the system's lifetime. Article 12(2) says the logs must enable
+recording of events relevant to identifying situations where the system may present a risk,
+facilitating post-market monitoring, and monitoring the system's operation.
 
-**Implementation:** Every audit log record carries two temporal identifiers:
-- `timestamp` — UTC ISO 8601, microsecond precision, logged at the moment of agent execution
-- `session_id` — a UUID generated once per query invocation, linking all records from a single
-  diagnostic run so an auditor can reconstruct the complete processing chain for any specific
-  request
+**Implementation:** Every agent step writes one record to an append-only JSON Lines log:
+
+| Field | What it records | Why it matters for Article 12 |
+|---|---|---|
+| `timestamp` | UTC ISO 8601, microsecond precision, written when the agent runs | When each event happened |
+| `session_id` | A UUID per query, shared by all steps of one diagnostic run | Reconstructs the full processing chain for any request |
+| `agent` | The component responsible (`planner`, `kg_agent`, `rag_agent`, `synthesis_agent`, `human_checkpoint`) | Each decision point can be audited in isolation |
+| `input_data` / `output_data` | Structured inputs and outputs of every step | Replay, drift detection, and proof of what the synthesis agent saw |
+| `tool_calls` | Every external capability invoked, e.g. `neo4j.run_cypher` (with the exact Cypher stored in `output_data`) and `chroma.similarity_search_with_relevance_scores` | Shows the query was scoped to the right equipment and fault, and that no unintended data was accessed |
+| `sources` | Provenance: `Neo4j KG` and the specific manual files retrieved | Answers *"on what basis did the system recommend this?"* |
+| `confidence` | The synthesis score shown to the operator | Lets a reviewer see how strong the evidence looked at the time |
+| `notes` | Supplementary human-readable context | |
 
 These fields make it possible to answer: *"What did the system do when the operator queried
-Pump-14 at 09:14 on 3 July 2026?"*
+Pump-14 at 09:14 on 3 July 2026, and why?"* Decomposing the system into bounded agents, rather than
+one monolithic AI call, is itself a logging decision: each step has its own record.
+
+**Retention:** Article 19 (providers) and Article 26(6) (deployers) require automatically generated
+logs to be kept for a period appropriate to the intended purpose, of at least six months unless other
+law provides otherwise. This prototype writes to a local file and does not yet enforce retention or
+tamper-evidence; see *Known gaps* below.
 
 ---
 
-### Art. 50(1)(b) — Identify the AI system involved
+### Article 13 — Transparency and information for the people using the system
 
-**Provision:** Providers must ensure that the AI system is designed so that natural persons are
-informed they are interacting with an AI system.
+**Provision:** Article 13(1) requires high-risk AI systems to be designed so that their operation is
+sufficiently transparent for deployers to interpret the output and use it appropriately. Article 13(3)
+requires instructions for use covering, among other things, the system's level of accuracy and the
+metrics used to test it, and, where applicable, its ability to provide information that explains its
+output.
 
-**Implementation:** The `agent` field in every log record names the specific system component
-responsible for that step (`planner`, `kg_agent`, `rag_agent`, `synthesis_agent`,
-`human_checkpoint`). Each component has a defined, bounded scope of responsibility.
-
-This decomposition — rather than a single monolithic AI call — is itself a governance choice:
-it makes each decision point auditable in isolation. An auditor can verify independently
-whether the planner correctly decomposed the query, whether the KG agent ran the right Cypher,
-whether the synthesis agent weighted the evidence appropriately.
-
----
-
-### Art. 50(1)(c) — Record inputs and outputs
-
-**Provision:** Providers must maintain records of inputs and outputs of the AI system.
-
-**Implementation:** `input_data` and `output_data` are logged at every step as structured JSON.
-This enables:
-- **Replay:** any step can be re-executed with the same inputs to verify consistency
-- **Drift detection:** if the KG schema changes and the Cypher produces different results, the log
-  shows exactly when the output changed and why
-- **Accountability:** the log proves what information was available to the synthesis agent when it
-  produced its recommendation
-
----
-
-### Art. 50(1)(d) — Traceability of actions taken by the AI system
-
-**Provision:** Providers must maintain records of any actions taken by the AI system.
-
-**Implementation:** `tool_calls` records every external capability invoked — specifically:
-- `neo4j.run_cypher` — each KG query, with the exact Cypher string stored inside `output_data`
-- `chroma.similarity_search_with_relevance_scores` — each vector search
-
-Storing the exact Cypher query (not just "a KG call was made") is essential: it allows a reviewer
-to verify that the query was correctly scoped to the right equipment and fault, and that no
-unintended data was accessed.
-
----
-
-### Art. 50(1)(e) — Data and knowledge sources used
-
-**Provision:** Providers must maintain records of the data sources used by the AI system.
-
-**Implementation:** The `sources` field records provenance at the retrieval layer:
-- KG agent: `["Neo4j KG"]`
-- RAG agent: `["bearing_wear.txt", "vibration_diagnostics_general.txt", ...]`
-- Synthesis agent: the combined list, deduplicated
-
-This means the audit log can answer: *"On what basis did the system recommend Bearing Replacement?"*
-— and the answer traces to specific KG nodes and specific passages in specific manual files.
-
-A future enhancement would add Neo4j node IDs to the `sources` field for even finer-grained
-data lineage.
-
----
-
-### Art. 50(2) — Degree of AI confidence; enabling meaningful human review
-
-**Provision:** Providers must ensure that AI-generated content is marked and that natural persons
-have sufficient information to evaluate the AI output before acting on it.
-
-**Implementation:** The `confidence` field (range 0–1) is computed from two evidence streams:
+**Implementation:** At the checkpoint the operator sees the diagnosis, the recommended action, the
+evidence sources and a confidence score, before deciding anything. The score combines two evidence
+streams:
 
 ```
 confidence = (kg_severity_weight × 0.8 + rag_max_relevance_score × 0.6) / 1.4
 ```
 
-Where `kg_severity_weight` maps fault severity to confidence contribution:
-`CRITICAL → 1.0`, `HIGH → 0.8`, `MEDIUM → 0.6`, `LOW → 0.4`.
+where `kg_severity_weight` maps fault severity to `CRITICAL → 1.0`, `HIGH → 0.8`, `MEDIUM → 0.6`,
+`LOW → 0.4`. A low score (below about 0.4) means weak knowledge-graph coverage and low-scoring
+manual passages, which should prompt the operator to consult other sources before acting.
 
-The confidence score is:
-1. Logged in the audit record for every synthesis step
-2. Displayed prominently to the human operator at the checkpoint, before they decide
-3. Printed in the final output
-
-This is not confidence theatre — it carries real information: a LOW confidence score
-(below ~0.4) indicates the synthesis had weak KG coverage and low-scoring RAG chunks,
-which should prompt the operator to consult additional sources before acting.
+**Limitation:** this score is a heuristic evidence-strength indicator, **not a calibrated
+probability**. A score of 0.81 does not mean the diagnosis is right 81% of the time. Accuracy metrics
+of the kind Article 13(3) and Article 15 expect would require evaluation against a labelled set of
+queries; see *Known gaps* below.
 
 ---
 
-### Art. 50(3) — Human oversight before consequential output
+### Article 14 — Human oversight before consequential output
 
-**Provision:** For high-risk AI systems, providers must implement human oversight measures
-enabling natural persons to oversee and correct AI outputs before they are acted upon.
+**Provision:** Article 14(1) requires high-risk AI systems to be designed so that natural persons
+can effectively oversee them while in use. Article 14(4) lists what oversight must enable, including
+correctly interpreting the output, remaining aware of the tendency to over-rely on it (automation
+bias), and deciding not to use the output or to disregard, override or reverse it.
 
-**Implementation:** The `human_checkpoint` node in the LangGraph graph is a **hard gate**
-in the state machine:
+**Implementation:** The `human_checkpoint` node in the LangGraph graph is a **hard gate** in the
+state machine:
 
-- No `FinalOutput` object is created until the human makes an explicit decision
-- The operator sees: the full diagnosis, the recommended action, the confidence score,
-  the evidence sources, and the system's reasoning
-- The operator can **approve** (accept the AI recommendation as-is), **reject** (decline to
-  act; nothing is returned), or **edit** (modify the recommendation text before finalising)
-- The human's decision, the original AI recommendation, and any edited text are logged
+- No `FinalOutput` object is created until the operator makes an explicit decision
+- The operator sees the full diagnosis, the recommended action, the confidence score, the evidence
+  sources and the system's reasoning
+- The operator can **approve** (accept the recommendation as-is), **reject** (decline to act;
+  nothing is returned) or **edit** (change the recommendation before finalising), which covers
+  disregarding, overriding and reversing the output
+- The decision, the original AI recommendation and any edited text are logged
 
-This is not "human-on-the-loop" (monitoring after the fact) — it is "human-in-the-loop"
-(approval required before any output is finalised). The state machine cannot route past the
-checkpoint node.
+This is human-in-the-loop (approval required before any output is finalised), not
+human-on-the-loop (monitoring after the fact). The state machine cannot route past the checkpoint.
+
+---
+
+### Known gaps against Articles 12–14
+
+This is a research prototype. Before any real deployment it would need, at least:
+
+- **Tamper-evident logs and retention.** The log is a plain append-only file; it is not
+  hash-chained, signed or kept for a defined period (Articles 12 and 19).
+- **Measured accuracy.** Five benchmark queries are not an evaluation. The confidence score should be
+  validated and calibrated against a labelled query set (Articles 13 and 15).
+- **Evidence that oversight is real.** The checkpoint records the decision but not the reason or the
+  time spent reviewing, so rubber-stamp approvals cannot be detected (Article 14(4)(b)).
+- **Instructions for use.** There is no deployer-facing document covering intended purpose, limits
+  and accuracy (Article 13(3)).
 
 ---
 
