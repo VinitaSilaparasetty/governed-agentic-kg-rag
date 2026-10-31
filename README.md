@@ -144,7 +144,7 @@ governed-agentic-kg-rag/
 
 ## Data
 
-All data in `data/` is original synthetic content released under **Creative Commons CC0 1.0 Universal** (public domain). It is not derived from any proprietary or copyrighted source. See `data/DATA.md` for full provenance and licence details.
+The knowledge-graph seed and the five core manual files in `data/` are original synthetic content released under **Creative Commons CC0 1.0 Universal** (public domain). Two reference files are third-party: `data/manuals/cwru_bearing_signatures.txt` (CWRU Bearing Data Center) and `data/manuals/uci_hydraulic_reference.txt` (UCI Machine Learning Repository, CC BY 4.0), each under its own licence. See `data/DATA.md` for full provenance and licence details.
 
 ---
 
